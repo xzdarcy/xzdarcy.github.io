@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.8.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="模板缓冲一张图明白什么是模板缓冲：  WebGL中的stencil buffer（模板缓冲区）的作用也是类似的，可以在Buffer中指定一个形状作为模板，接着通过stencil test（模板测试）过程让位于形状内部的物体显示，而外部不显示，类似遮罩的效果。当然也可以反过来，让形状内部不显示物体，而外部显示。Stencil buffer为每个fragment提供8位的存储空间，即可以存储256个不">
+<meta property="og:type" content="article">
+<meta property="og:title" content="WebGL_入门学习3">
+<meta property="og:url" content="http://example.com/posts/webgl_study3/index.html">
+<meta property="og:site_name" content="zhaha&#39;s blog">
+<meta property="og:description" content="模板缓冲一张图明白什么是模板缓冲：  WebGL中的stencil buffer（模板缓冲区）的作用也是类似的，可以在Buffer中指定一个形状作为模板，接着通过stencil test（模板测试）过程让位于形状内部的物体显示，而外部不显示，类似遮罩的效果。当然也可以反过来，让形状内部不显示物体，而外部显示。Stencil buffer为每个fragment提供8位的存储空间，即可以存储256个不">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/images/webgl/webgl18.png">
+<meta property="og:image" content="http://example.com/images/webgl/webgl19.png">
+<meta property="og:image" content="http://example.com/images/webgl/webgl20.png">
+<meta property="article:published_time" content="2021-01-18T11:48:08.000Z">
+<meta property="article:modified_time" content="2021-11-30T12:48:57.442Z">
+<meta property="article:author" content="zhaha">
+<meta property="article:tag" content="webgl">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/images/webgl/webgl18.png">
+
+
+<link rel="canonical" href="http://example.com/posts/webgl_study3/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/posts/webgl_study3/","path":"posts/webgl_study3/","title":"WebGL_入门学习3"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>WebGL_入门学习3 | zhaha's blog</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">zhaha's blog</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A8%A1%E6%9D%BF%E7%BC%93%E5%86%B2"><span class="nav-number">1.</span> <span class="nav-text">模板缓冲</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Batch"><span class="nav-number">2.</span> <span class="nav-text">Batch</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">zhaha</p>
+  <div class="site-description" itemprop="description">Growing front-end engineer.</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/posts/webgl_study3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="zhaha">
+      <meta itemprop="description" content="Growing front-end engineer.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zhaha's blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          WebGL_入门学习3
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-01-18 19:48:08" itemprop="dateCreated datePublished" datetime="2021-01-18T19:48:08+08:00">2021-01-18</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-11-30 20:48:57" itemprop="dateModified" datetime="2021-11-30T20:48:57+08:00">2021-11-30</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/note/" itemprop="url" rel="index"><span itemprop="name">note</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="模板缓冲"><a href="#模板缓冲" class="headerlink" title="模板缓冲"></a>模板缓冲</h1><p><a target="_blank" rel="noopener" href="http://www.jiazhengblog.com/blog/2016/04/05/2941/">一张图明白什么是模板缓冲</a>：</p>
+<p><img src="/images/webgl/webgl18.png" alt="webgl"></p>
+<p>WebGL中的stencil buffer（模板缓冲区）的作用也是类似的，可以在Buffer中指定一个形状作为模板，接着通过stencil test（模板测试）过程让位于形状内部的物体显示，而外部不显示，类似遮罩的效果。当然也可以反过来，让形状内部不显示物体，而外部显示。Stencil buffer为每个fragment提供8位的存储空间，即可以存储256个不同的数值，但是如果要实现一个简单的模板剪裁效果，其实1位（0和1）就够用了。Stencil buffer的作用如下图所示：</p>
+<p><img src="/images/webgl/webgl19.png" alt="webgl"></p>
+<h1 id="Batch"><a href="#Batch" class="headerlink" title="Batch"></a>Batch</h1><p><img src="/images/webgl/webgl20.png" alt="webgl"></p>
+<p>每调用1次渲染api并不是直接经过以上的所有组件通知gpu执行我们的调用。</p>
+<p>runtime会将api调用转换为设备无关的”命令”(这样才能保证在任何设备硬件上兼容，其实也就是做到对不同的硬件架构做到透明)，然后将命令缓存到commandbuffer中去。</p>
+<p>而命令从runtime到driver这个过程中，cpu会发生从用户模式到内核模式的转换。这个操作是一件非常耗时的工作。所以说如果每次api调用都直接发送命令到driver，那将是非常巨大的性能消耗。</p>
+<p>所以在不是必须要马上提交给GPU绘制的命令，我们可以先缓存在commandbuffer中，等到需要时一次性提交，优化效率。当然这里边还涉及到渲染状态(texture，shader，material各种参数)的影响，如果渲染状态改变了，那么要使用之前渲染状态进行渲染的所有drawcall命令必须全部被执行了。也就是说之前缓冲在commandbuffer中的所有drawcall命令必须刷新。这其实会发生一次从用户模式到内核模式的切换。</p>
+<p>主要时间消耗</p>
+<ol>
+<li>runtime需要将api转换成设备无关的”命令”的时间消耗。</li>
+<li>状态切换导致的从用户模式到内核模式的模式切换的时间消耗</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/webgl/" rel="tag"># webgl</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/web_audio1/" rel="prev" title="Web audio 学习笔记（入门）">
+                  <i class="fa fa-chevron-left"></i> Web audio 学习笔记（入门）
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/webgl_study4/" rel="next" title="WebGL_入门学习4 (shader)">
+                  WebGL_入门学习4 (shader) <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zhaha</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

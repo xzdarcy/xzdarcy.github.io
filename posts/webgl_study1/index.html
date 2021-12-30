@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.8.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="基本概念理解渲染管线CPU &amp; GPU 的区别   应用程序阶段(CPU): 对图元数据等信息进行配置和调控，最后传输到下一个阶段。实现碰撞检测、动画等等。 几何阶段(GPU):     模型视点变换： 模型坐标系&#x3D;》世界坐标系&#x3D;》视觉空间 顶点着色：确定顶点颜色，着色器来编写颜色方程放在GPU里运行，快速的进行颜色的确定。 投影：从三维到二维空间映射 裁剪：去掉屏幕空间外的信息 屏幕映射">
+<meta property="og:type" content="article">
+<meta property="og:title" content="WebGL_入门学习1">
+<meta property="og:url" content="http://example.com/posts/webgl_study1/index.html">
+<meta property="og:site_name" content="zhaha&#39;s blog">
+<meta property="og:description" content="基本概念理解渲染管线CPU &amp; GPU 的区别   应用程序阶段(CPU): 对图元数据等信息进行配置和调控，最后传输到下一个阶段。实现碰撞检测、动画等等。 几何阶段(GPU):     模型视点变换： 模型坐标系&#x3D;》世界坐标系&#x3D;》视觉空间 顶点着色：确定顶点颜色，着色器来编写颜色方程放在GPU里运行，快速的进行颜色的确定。 投影：从三维到二维空间映射 裁剪：去掉屏幕空间外的信息 屏幕映射">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/images/webgl/webgl1.png">
+<meta property="og:image" content="http://example.com/images/webgl/webgl2.png">
+<meta property="og:image" content="http://example.com/images/webgl/webgl3.png">
+<meta property="og:image" content="http://example.com/images/webgl/webgl4.png">
+<meta property="og:image" content="http://example.com/images/webgl/webgl5.png">
+<meta property="og:image" content="http://example.com/images/webgl/webgl6.png">
+<meta property="article:published_time" content="2020-11-30T11:48:08.000Z">
+<meta property="article:modified_time" content="2021-11-30T12:48:57.248Z">
+<meta property="article:author" content="zhaha">
+<meta property="article:tag" content="webgl">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/images/webgl/webgl1.png">
+
+
+<link rel="canonical" href="http://example.com/posts/webgl_study1/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/posts/webgl_study1/","path":"posts/webgl_study1/","title":"WebGL_入门学习1"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>WebGL_入门学习1 | zhaha's blog</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">zhaha's blog</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5%E7%90%86%E8%A7%A3"><span class="nav-number">1.</span> <span class="nav-text">基本概念理解</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF"><span class="nav-number">1.1.</span> <span class="nav-text">渲染管线</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%89%E6%A0%85%E5%8C%96"><span class="nav-number">1.2.</span> <span class="nav-text">光栅化</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#shader"><span class="nav-number">2.</span> <span class="nav-text">shader</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#WebGL-%E7%A8%8B%E5%BA%8F%E6%89%A7%E8%A1%8C%E6%B5%81%E7%A8%8B"><span class="nav-number">2.1.</span> <span class="nav-text">WebGL 程序执行流程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E4%B8%AA%E4%B8%89%E7%BB%B4%E7%89%A9%E4%BD%93%E5%9C%A8%E4%BA%8C%E7%BB%B4%E5%B1%8F%E5%B9%95%E4%B8%8A%E7%9A%84%E6%98%BE%E7%A4%BA%E8%BF%87%E7%A8%8B"><span class="nav-number">2.1.1.</span> <span class="nav-text">一个三维物体在二维屏幕上的显示过程</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A1%B6%E7%82%B9%E7%9D%80%E8%89%B2%E5%99%A8"><span class="nav-number">2.2.</span> <span class="nav-text">顶点着色器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%89%87%E5%85%83%E7%9D%80%E8%89%B2%E5%99%A8"><span class="nav-number">2.3.</span> <span class="nav-text">片元着色器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%BE%E5%BD%A2%E6%B5%81%E6%B0%B4%E7%BA%BF"><span class="nav-number">2.4.</span> <span class="nav-text">图形流水线</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Attribute"><span class="nav-number">2.5.</span> <span class="nav-text">Attribute</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Uniform"><span class="nav-number">2.6.</span> <span class="nav-text">Uniform</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Varying"><span class="nav-number">2.7.</span> <span class="nav-text">Varying</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#WebGl-%E7%9B%B8%E5%85%B3-Api"><span class="nav-number">2.8.</span> <span class="nav-text">WebGl 相关 Api</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9B%E5%BB%BAshader%E7%9B%B8%E5%85%B3"><span class="nav-number">2.8.1.</span> <span class="nav-text">创建shader相关</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#shader%E4%BC%A0%E5%80%BC%E7%9B%B8%E5%85%B3"><span class="nav-number">2.8.2.</span> <span class="nav-text">shader传值相关</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E5%8A%A0%E8%BD%BD%E7%BA%B9%E7%90%86"><span class="nav-number">3.</span> <span class="nav-text">配置加载纹理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%A2%9C%E8%89%B2%E6%B7%B7%E5%90%88"><span class="nav-number">4.</span> <span class="nav-text">颜色混合</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B7%B1%E5%BA%A6%E6%B5%8B%E8%AF%95"><span class="nav-number">5.</span> <span class="nav-text">深度测试</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E9%98%85%E8%AF%BB"><span class="nav-number">6.</span> <span class="nav-text">参考阅读</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">zhaha</p>
+  <div class="site-description" itemprop="description">Growing front-end engineer.</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/posts/webgl_study1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="zhaha">
+      <meta itemprop="description" content="Growing front-end engineer.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zhaha's blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          WebGL_入门学习1
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-11-30 19:48:08" itemprop="dateCreated datePublished" datetime="2020-11-30T19:48:08+08:00">2020-11-30</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-11-30 20:48:57" itemprop="dateModified" datetime="2021-11-30T20:48:57+08:00">2021-11-30</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/note/" itemprop="url" rel="index"><span itemprop="name">note</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="基本概念理解"><a href="#基本概念理解" class="headerlink" title="基本概念理解"></a>基本概念理解</h1><h2 id="渲染管线"><a href="#渲染管线" class="headerlink" title="渲染管线"></a>渲染管线</h2><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/biglucky/p/4223565.html">CPU &amp; GPU 的区别</a></p>
+<ol>
+<li> 应用程序阶段(CPU): 对图元数据等信息进行配置和调控，最后传输到下一个阶段。实现碰撞检测、动画等等。</li>
+<li>几何阶段(GPU):  </li>
+</ol>
+<ul>
+<li>模型视点变换： 模型坐标系=》世界坐标系=》视觉空间</li>
+<li>顶点着色：确定顶点颜色，着色器来编写颜色方程放在GPU里运行，快速的进行颜色的确定。</li>
+<li>投影：从三维到二维空间映射</li>
+<li>裁剪：去掉屏幕空间外的信息</li>
+<li>屏幕映射：将之前得到的坐标映射到屏幕坐标系上</li>
+</ul>
+<ol start="3">
+<li>光栅化阶段(GPU)（见下文）</li>
+</ol>
+<h2 id="光栅化"><a href="#光栅化" class="headerlink" title="光栅化"></a>光栅化</h2><p>概念：将矢量顶点组成的图形进行像素化的过程，计算屏幕上每一个像素点的rgb值。</p>
+<p>目前主流的面片分割是三角形分割，所以我们常见的也是三角形网络。在这3d模型中每一个面片单元都是三角形。以下是常用的三种计算一个三角形单元颜色的方法：</p>
+<ul>
+<li>顶点颜色取平均值</li>
+<li>取某个点颜色</li>
+<li>取三个顶点颜色的渐变</li>
+</ul>
+<h1 id="shader"><a href="#shader" class="headerlink" title="shader"></a>shader</h1><p>shader本质上是一个函数，我们用到的shader函数会被串联到一个着色器程序中。</p>
+<p>shader 分两大类。Vertex Shader（顶点着色器）and Fragment Shader(片段着色器)。</p>
+<h2 id="WebGL-程序执行流程"><a href="#WebGL-程序执行流程" class="headerlink" title="WebGL 程序执行流程"></a>WebGL 程序执行流程</h2><p><img src="/images/webgl/webgl1.png" alt="webgl"></p>
+<h3 id="一个三维物体在二维屏幕上的显示过程"><a href="#一个三维物体在二维屏幕上的显示过程" class="headerlink" title="一个三维物体在二维屏幕上的显示过程"></a>一个三维物体在二维屏幕上的显示过程</h3><ol>
+<li>坐标变换（transform）：将场景中的三维坐标转换为二维坐标  (顶点着色器)</li>
+<li>颜色计算（shade）:  计算每个顶点的颜色，通过UV贴图的颜色，结合光照，透明度等，计算出模型每个顶点的具体颜色（R, G, B）(顶点着色器，会传递给片元着色器)</li>
+<li>光栅化（rasterization）:  假定屏幕分辨率为1920×1080，在二维屏幕渲染（光栅化）时，内存中frame buffer只保存着1920×1080个屏幕点的颜色，然后一个一个的画到屏幕上。（它的实现方式是以一个1920×1080长的一维数组储存每个顶点的RGB颜色，然后遍历数组画出来）什么X, Y, Z，什么alpha之类的frame buffer都没有的，在frame buffer里只有3个值：R, G, B。X, Y, Z, alpha等等属性要在另外的地方存储。光栅化，就是计算出1920×1080这么长的RGB数组中，每一个RGB的值。</li>
+<li>片元着色器</li>
+</ol>
+<p><img src="/images/webgl/webgl2.png" alt="webgl"></p>
+<h2 id="顶点着色器"><a href="#顶点着色器" class="headerlink" title="顶点着色器"></a>顶点着色器</h2><p>顶点着色器将顶点的空间坐标映射到屏幕上的2d坐标。多用于3d模型构建。如果有之后定义了几何着色器，则几何着色器会处理顶点着色器的输出数据.</p>
+<p>顶点着色器数据输入方式</p>
+<ol>
+<li>Attribute</li>
+<li>uniform</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">void main() &#123;</span><br><span class="line">  gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="片元着色器"><a href="#片元着色器" class="headerlink" title="片元着色器"></a>片元着色器</h2><p>用于计算“片段”的颜色和其它属性，此处的“片段”通常是指单独的像素。最简单的像素着色器只有输出颜色值；复杂的像素着色器可以有多个输入输出。像素着色器既可以永远输出同一个颜色，也可以考虑光照、做凹凸贴图、生成阴影和高光，还可以实现半透明等效果。像素着色器还可以修改片段的深度，也可以为多个渲染目标输出多个颜色。</p>
+<p>片段着色器输入数据方式：</p>
+<ol>
+<li>Uniform</li>
+<li>Texture</li>
+<li>Varying</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">void main() &#123;</span><br><span class="line">  gl_FragColor = vec4( 1.0, 0.0, 0.0, 1.0 );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="图形流水线"><a href="#图形流水线" class="headerlink" title="图形流水线"></a>图形流水线</h2><ul>
+<li>中央处理器（CPU）发送指令（编译的着色器程序）和几何数据到位于显卡内的图形处理器（GPU）。</li>
+<li>顶点着色器执行几何变换和光照计算。</li>
+<li>若几何着色器位于图形处理器内，它便会修改一些几何信息。</li>
+<li>计算后的几何模型被三角化（分割为三角形）。</li>
+<li>三角形被映射为2×2的像素块。</li>
+</ul>
+<h2 id="Attribute"><a href="#Attribute" class="headerlink" title="Attribute"></a>Attribute</h2><p>只出现在顶点着色器中，用来表示逐顶点的信息。可 从缓存中读取属性。<br>只能是fload 、vec 、mat 类型</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">// 创建缓存</span><br><span class="line">let buffer = gl.createBuffer();</span><br><span class="line">// 写入数据</span><br><span class="line">gl.bindBuffer(gl.ARRAY_BUFFER, buffer);</span><br><span class="line">gl.bufferData(gl.ARRAY_BUFFER, 数据, gl.STATIC_DRAW);</span><br><span class="line"></span><br><span class="line">// 找到 attribute 的位置</span><br><span class="line">const location = gl.getAttribLocation(program, &quot;a_Position&quot;);</span><br><span class="line"></span><br><span class="line">// 允许该属性从缓冲区获取数据</span><br><span class="line">gl.enableVertexAttribArray(location);</span><br><span class="line"></span><br><span class="line">// 属性赋值</span><br><span class="line">gl.vertexAttribPointer(positionLoc, numComponents, type, false, stride, offset);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><code>gl.createBuffer()</code></p>
+<p><code>gl.bindBuffer(target, buffer) </code></p>
+<h2 id="Uniform"><a href="#Uniform" class="headerlink" title="Uniform"></a>Uniform</h2><p>传递给着色器的值。用于外部与着色器进行通信，是只读的在着色器中无法修改，在所有已处理的顶点之间值相同。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">// three  </span><br><span class="line">const material = new THREE.ShaderMaterial(&#123;</span><br><span class="line">    transparent: true,</span><br><span class="line">    uniforms: &#123;</span><br><span class="line">      // 下面定义一些 uniform 传递给 shader</span><br><span class="line">      maskOffset: &#123; value: maskOffset &#125;,</span><br><span class="line">      imageSize: &#123; value: new THREE.Vector2(1, 1) &#125;,</span><br><span class="line">      time: &#123; value: 0.0 &#125;,</span><br><span class="line">      map: &#123; value: new THREE.TextureLoader().load(image) &#125;,</span><br><span class="line">      map2: &#123; value: new THREE.TextureLoader().load(image) &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">    vertexShader: vertex,</span><br><span class="line">    fragmentShader: fragment,</span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="Varying"><a href="#Varying" class="headerlink" title="Varying"></a>Varying</h2><p>从顶点着色器传递给片段着色器的值。与uniform 不同的是，varying可以被顶点着色器修改，在片段着色器中只读。值是一个插值数据，每个像素都不同。顶点着色器的v_color在传入片元着色器之前经过了一个内插过程，所以才会有如下渐变效果。</p>
+<p><img src="/images/webgl/webgl3.png" alt="webgl"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">// 顶点着色器</span><br><span class="line">attribute vec4 a_Position;</span><br><span class="line">attribute float a_PointSize;</span><br><span class="line">attribute vec4 a_Color;</span><br><span class="line">varying vec4 v_Color;</span><br><span class="line">void main() &#123;</span><br><span class="line">  gl_Position = a_Position;</span><br><span class="line">  gl_PointSize = a_PointSize;</span><br><span class="line">  v_Color = a_Color;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 片段着色器</span><br><span class="line">precision mediump float;</span><br><span class="line">varying vec4 v_Color;</span><br><span class="line">void main() &#123;</span><br><span class="line">  gl_FragColor = v_Color;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/webgl/webgl4.png" alt="webgl"></p>
+<h2 id="WebGl-相关-Api"><a href="#WebGl-相关-Api" class="headerlink" title="WebGl 相关 Api"></a>WebGl 相关 Api</h2><h3 id="创建shader相关"><a href="#创建shader相关" class="headerlink" title="创建shader相关"></a>创建shader相关</h3><ul>
+<li>gl.createProgram() 创建着色器程序</li>
+<li>gl.attachShader(program, shader)把着色器放到着色器程序上</li>
+<li>gl.linkProgram(program) 连接着色器程序中的着色器</li>
+<li>gl.useProgram(program) 指定webgl使用的着色器程序</li>
+<li>gl.createShader(type: gl.VERTEX_SHADER | gl.FRAGMENT_SHADER):WebGLShader ： 创建指定类型的shader</li>
+<li>gl.shaderSource(shader, code): code 为 shader代码段，给shader设置 code 资源</li>
+<li>gl.compileShader(shader): 编译shader</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">const canvas = &lt;HTMLCanvasElement&gt;document.getElementById(&#x27;webgl&#x27;);</span><br><span class="line">const gl = canvas.getContext(&#x27;webgl&#x27;);</span><br><span class="line">const program = gl.createProgram();</span><br><span class="line">const vertex_shader = createShader(gl, vertex, gl.VERTEX_SHADER);</span><br><span class="line">const flag_shader = createShader(gl, frag, gl.FRAGMENT_SHADER);</span><br><span class="line">gl.attachShader(program, vertex_shader);</span><br><span class="line">gl.attachShader(program, flag_shader);</span><br><span class="line">// 将program中的shader连接起来</span><br><span class="line">gl.linkProgram(program);</span><br><span class="line">// 指定webgl使用的着色器程序</span><br><span class="line">gl.useProgram(program);</span><br><span class="line"></span><br><span class="line">function createShader (gl: WebGLRenderingContext, sourceCode: string, type: number) &#123;</span><br><span class="line">  const shader = gl.createShader( type );</span><br><span class="line">  gl.shaderSource( shader, sourceCode );</span><br><span class="line">  gl.compileShader( shader );</span><br><span class="line">  // 以下用于测试 shader 是否正确 </span><br><span class="line">  if ( !gl.getShaderParameter(shader, gl.COMPILE_STATUS) ) &#123;</span><br><span class="line">    var info = gl.getShaderInfoLog( shader );</span><br><span class="line">    throw &#x27;Could not compile WebGL program. \n\n&#x27; + info;</span><br><span class="line">  &#125;</span><br><span class="line">  return shader;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="shader传值相关"><a href="#shader传值相关" class="headerlink" title="shader传值相关"></a>shader传值相关</h3><ul>
+<li>从缓冲中获取属性<br><img src="/images/webgl/webgl5.png" alt="webgl"></li>
+<li>给uniform 赋值： gl.uniform…</li>
+<li>给attribute赋值：gl.vertexAttrib…</li>
+</ul>
+<h1 id="配置加载纹理"><a href="#配置加载纹理" class="headerlink" title="配置加载纹理"></a>配置加载纹理</h1><p>webgl通过一种纹理单元的机制来同时使用多个纹理，每个纹理单元有一个单元编号来管理纹理图像，即使程序只需要使用一张纹理图像也要指定纹理单元。系统支持的纹理单元个数取决于硬件和浏览器的webGL实现。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">function loadTexture(image: HTMLImageElement, gl: WebGLRenderingContext, program: WebGLProgram)&#123;</span><br><span class="line">  const texture = gl.createTexture();</span><br><span class="line">  // 对纹理图像进行y轴反转  让纹理和图片坐标系统能对应上</span><br><span class="line">  gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, 1);</span><br><span class="line">  // 激活一个纹理单元 </span><br><span class="line">  gl.activeTexture(gl.TEXTURE0);</span><br><span class="line">  // 绑定纹理对象，指定纹理类型。如果已经激活了某个纹理单元，但纹理对象也会绑定到单元上</span><br><span class="line">  gl.bindTexture(gl.TEXTURE_2D, texture);</span><br><span class="line">  gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, image);</span><br><span class="line">  // 创建mipmap</span><br><span class="line">  // gl.generateMipmap(gl.TEXTURE_2D);</span><br><span class="line">  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);</span><br><span class="line">  const u_Sampler = gl.getUniformLocation(program, &#x27;u_Sampler&#x27;);</span><br><span class="line">  gl.uniform1i(u_Sampler, 0);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>纹理过滤器</strong><br>只有 gl.CLAMP_TO_EDGE 支持非2的整次幂的纹理。<a target="_blank" rel="noopener" href="https://www.khronos.org/webgl/wiki/WebGL_and_OpenGL_Differences">非2幂次方的图片不能用repeat 和MIPMAP</a></p>
+<p>当纹理像素分辨率不符合2<em>2 4</em>4这种时，chrome上会报错： WARNING: texture bound to texture unit 0 is not renderable. It maybe non-power-of-2 and have incompatible texture filtering.要在设置水平和垂直如何填充的时候，设置成水平和垂直拉伸。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);</span><br><span class="line">gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);</span><br></pre></td></tr></table></figure>
+
+<p>解决方案：用dom api 改变图片的尺寸</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">function createTextureFromImage(image) &#123;</span><br><span class="line">    var texture = gl.createTexture();</span><br><span class="line">    gl.bindTexture(gl.TEXTURE_2D, texture);</span><br><span class="line">    if (!isPowerOfTwo(image.width) || !isPowerOfTwo(image.height)) &#123;</span><br><span class="line">        // Scale up the texture to the next highest power of two dimensions.</span><br><span class="line">        var canvas = document.createElement(&quot;canvas&quot;);</span><br><span class="line">        canvas.width = nextHighestPowerOfTwo(image.width);</span><br><span class="line">        canvas.height = nextHighestPowerOfTwo(image.height);</span><br><span class="line">        var ctx = canvas.getContext(&quot;2d&quot;);</span><br><span class="line">        ctx.drawImage(image, 0, 0, image.width, image.height);</span><br><span class="line">        image = canvas;</span><br><span class="line">    &#125;</span><br><span class="line">    gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, image);</span><br><span class="line">    gl.generateMipmap(gl.TEXTURE_2D);</span><br><span class="line">    gl.bindTexture(gl.TEXTURE_2D, null);</span><br><span class="line">    return texture;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function isPowerOfTwo(x) &#123;</span><br><span class="line">    return (x &amp; (x - 1)) == 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function nextHighestPowerOfTwo(x) &#123;</span><br><span class="line">    --x;</span><br><span class="line">    for (var i = 1; i &lt; 32; i &lt;&lt;= 1) &#123;</span><br><span class="line">        x = x | x &gt;&gt; i;</span><br><span class="line">    &#125;</span><br><span class="line">    return x + 1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="颜色混合"><a href="#颜色混合" class="headerlink" title="颜色混合"></a>颜色混合</h1><p>常用α混合：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">gl.enable(gl.BLEND)</span><br><span class="line">gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA)</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/webgl/webgl6.png" alt="webgl"></p>
+<h1 id="深度测试"><a href="#深度测试" class="headerlink" title="深度测试"></a>深度测试</h1><ol>
+<li>gl.enable(gl.DEPTH_TEST);</li>
+<li>gl.depthFunc(value)</li>
+</ol>
+<ul>
+<li>gl.NEVER （总不通过）</li>
+<li>gl.LESS（如果新值小于缓冲区中的值则通过）</li>
+<li>gl.EQUAL（如果新值等于缓冲区中的值则通过）</li>
+<li>gl.LEQUAL（如果新值小于等于缓冲区中的值则通过）</li>
+<li>gl.GREATER（如果新值大于缓冲区中的值则通过）</li>
+<li>gl.NOTEQUAL（如果新值不等于缓冲区中的值则通过）</li>
+<li>gl.GEQUAL（如果新值大于等于缓冲区中的值则通过）</li>
+<li>gl.ALWAYS（总通过）</li>
+</ul>
+<h1 id="参考阅读"><a href="#参考阅读" class="headerlink" title="参考阅读"></a>参考阅读</h1><p><a target="_blank" rel="noopener" href="https://xiaoiver.github.io/coding/2019/02/02/%E5%8F%8D%E8%B5%B0%E6%A0%B7%E6%8A%80%E6%9C%AF-%E4%B8%89.html">反走样</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/dcrmg/article/details/53556664">图形渲染管线、VBO、VAO、EBO概念</a></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/webgl/" rel="tag"># webgl</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/js_note2/" rel="prev" title="js深入_2(事件循环)">
+                  <i class="fa fa-chevron-left"></i> js深入_2(事件循环)
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/webgl_study2/" rel="next" title="WebGL_入门学习2">
+                  WebGL_入门学习2 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zhaha</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

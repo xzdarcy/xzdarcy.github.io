@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.8.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="缓冲区对象 创建缓冲区对象： gl.createBuffer() 绑定缓冲区对象： gl.bindBuffer() 将数据写入缓冲区对象：gl.bufferData()  void bufferData(GLenum target, GLsizeiptr size , GLenum usage);    1. 这个方法是上面方法的重载，把数据换成了size（单位字节）。  void buffer">
+<meta property="og:type" content="article">
+<meta property="og:title" content="WebGL_入门学习2">
+<meta property="og:url" content="http://example.com/posts/webgl_study2/index.html">
+<meta property="og:site_name" content="zhaha&#39;s blog">
+<meta property="og:description" content="缓冲区对象 创建缓冲区对象： gl.createBuffer() 绑定缓冲区对象： gl.bindBuffer() 将数据写入缓冲区对象：gl.bufferData()  void bufferData(GLenum target, GLsizeiptr size , GLenum usage);    1. 这个方法是上面方法的重载，把数据换成了size（单位字节）。  void buffer">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/images/webgl/webgl7.png">
+<meta property="og:image" content="http://example.com/images/webgl/webgl8.png">
+<meta property="og:image" content="http://example.com/images/webgl/webgl9.png">
+<meta property="og:image" content="http://example.com/images/webgl/webgl10.png">
+<meta property="og:image" content="http://example.com/images/webgl/webgl11.png">
+<meta property="og:image" content="http://example.com/images/webgl/webgl12.png">
+<meta property="og:image" content="http://example.com/images/webgl/webgl13.png">
+<meta property="og:image" content="http://example.com/images/webgl/webgl14.png">
+<meta property="og:image" content="http://example.com/images/webgl/webgl15.png">
+<meta property="og:image" content="http://example.com/images/webgl/webgl16.png">
+<meta property="og:image" content="http://example.com/images/webgl/webgl17.png">
+<meta property="article:published_time" content="2020-12-23T11:48:08.000Z">
+<meta property="article:modified_time" content="2021-11-30T12:48:57.332Z">
+<meta property="article:author" content="zhaha">
+<meta property="article:tag" content="webgl">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/images/webgl/webgl7.png">
+
+
+<link rel="canonical" href="http://example.com/posts/webgl_study2/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/posts/webgl_study2/","path":"posts/webgl_study2/","title":"WebGL_入门学习2"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>WebGL_入门学习2 | zhaha's blog</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">zhaha's blog</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BC%93%E5%86%B2%E5%8C%BA%E5%AF%B9%E8%B1%A1"><span class="nav-number">1.</span> <span class="nav-text">缓冲区对象</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3d%E5%9F%BA%E7%A1%80"><span class="nav-number">2.</span> <span class="nav-text">3d基础</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A8%A1%E5%9E%8B%E7%9F%A9%E9%98%B5"><span class="nav-number">2.1.</span> <span class="nav-text">模型矩阵</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%86%E5%9B%BE%E7%9F%A9%E9%98%B5"><span class="nav-number">2.2.</span> <span class="nav-text">视图矩阵</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8A%95%E5%BD%B1%E7%9F%A9%E9%98%B5"><span class="nav-number">2.3.</span> <span class="nav-text">投影矩阵</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AD%A3%E4%BA%A4%E6%8A%95%E5%BD%B1%EF%BC%9A-%E5%AE%9A%E4%B9%89%E7%9B%92%E7%8A%B6%E7%A9%BA%E9%97%B4"><span class="nav-number">2.3.1.</span> <span class="nav-text">正交投影： 定义盒状空间</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%8F%E8%A7%86%E6%8A%95%E5%BD%B1%EF%BC%9A-%E5%AE%9A%E4%B9%89%E9%87%91%E5%AD%97%E5%A1%94%E7%A9%BA%E9%97%B4"><span class="nav-number">2.3.2.</span> <span class="nav-text">透视投影： 定义金字塔空间</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B7%B1%E5%BA%A6%E6%B5%8B%E8%AF%95-amp-%E6%B7%B1%E5%BA%A6%E5%86%B2%E7%AA%81"><span class="nav-number">2.4.</span> <span class="nav-text">深度测试 &amp; 深度冲突</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9A%90%E8%97%8F%E9%9D%A2%E6%B6%88%E9%99%A4"><span class="nav-number">2.4.1.</span> <span class="nav-text">隐藏面消除</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%9A%E8%BE%B9%E5%BD%A2%E5%81%8F%E7%A7%BB"><span class="nav-number">2.4.2.</span> <span class="nav-text">多边形偏移</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%9A%E8%BE%B9%E5%BD%A2%E5%89%94%E9%99%A4"><span class="nav-number">2.4.3.</span> <span class="nav-text">多边形剔除</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#gl-drawArrays-amp-gl-drawElements"><span class="nav-number">2.5.</span> <span class="nav-text">gl.drawArrays &amp; gl.drawElements</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%90%83%E9%9D%A2%E5%9D%90%E6%A0%87%E7%B3%BB"><span class="nav-number">2.6.</span> <span class="nav-text">球面坐标系</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">zhaha</p>
+  <div class="site-description" itemprop="description">Growing front-end engineer.</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/posts/webgl_study2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="zhaha">
+      <meta itemprop="description" content="Growing front-end engineer.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zhaha's blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          WebGL_入门学习2
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-12-23 19:48:08" itemprop="dateCreated datePublished" datetime="2020-12-23T19:48:08+08:00">2020-12-23</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-11-30 20:48:57" itemprop="dateModified" datetime="2021-11-30T20:48:57+08:00">2021-11-30</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/note/" itemprop="url" rel="index"><span itemprop="name">note</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p><img src="/images/webgl/webgl7.png" alt="webgl"></p>
+<h1 id="缓冲区对象"><a href="#缓冲区对象" class="headerlink" title="缓冲区对象"></a>缓冲区对象</h1><ol>
+<li>创建缓冲区对象： gl.createBuffer()</li>
+<li>绑定缓冲区对象： gl.bindBuffer()</li>
+<li>将数据写入缓冲区对象：gl.bufferData()</li>
+<li> void bufferData(GLenum target, GLsizeiptr size , GLenum usage);    1. 这个方法是上面方法的重载，把数据换成了size（单位字节）。</li>
+<li> void bufferSubData(GLenum target, GLintptr offset, BufferDataSource? data);    1. 这个方法结合方法a，进行赋值， offset是偏移量（单位字节）。    2. 通常用a和b结合的方式，更灵活一些。</li>
+<li>将缓冲区对象分配给一个attribute变量：gl.vertexAttribPointer()</li>
+<li>开启attribute变量：gl.enableVertexAttribArray()</li>
+<li>删除缓冲区对象： gl.deleteBuffer()</li>
+</ol>
+<h1 id="3d基础"><a href="#3d基础" class="headerlink" title="3d基础"></a>3d基础</h1><p>3d区别于2d最显著的就是3d有深度。</p>
+<p>根据上次的笔记我们知道，shader是渲染的基础，虽然在3d中我们要考虑的多得多，但是最后还是要把3d场景绘制在2d屏幕上（观察者看到的世界）。</p>
+<h2 id="模型矩阵"><a href="#模型矩阵" class="headerlink" title="模型矩阵"></a>模型矩阵</h2><p>我们把使用平移、缩放、旋转等基本变换矩阵或他们的组合叫做模型矩阵。这里不做赘述。</p>
+<p>使用过three等webgl库的人应该很清楚相机的概念。</p>
+<p>其实一个相机就是在模拟一个观察者。</p>
+<p>我们需要的就是确定观察者的状态（视图矩阵），以及观察者的可视范围（投影矩阵）。</p>
+<p>我们以 three 的正交相机举例</p>
+<p><img src="/images/webgl/webgl8.png" alt="webgl"></p>
+<ul>
+<li>当相机初始化的时候，我们传入的这些参数（可见下文正交投影解析），就构成了一个正交投影矩阵，它也定义了这个相机的可视范围。<br>其他WebGL库以及webGL引擎的相机的能力大多如此，只是api形式有所变化而已。</li>
+</ul>
+<h2 id="视图矩阵"><a href="#视图矩阵" class="headerlink" title="视图矩阵"></a>视图矩阵</h2><p>为了确定观察者的状态，我们需要知道：</p>
+<ul>
+<li>视点（观察者的位置）：观察者所在三维空间，视线的起点。</li>
+<li>观察目标点：被观察的目标所在的位置。（视线穿过目标点并继续延展）</li>
+<li>上方向：最终绘制在屏幕上的影像中向上的方向。（固定住观察者，不让其以视线为轴旋转）</li>
+</ul>
+<p><img src="/images/webgl/webgl9.png" alt="webgl"></p>
+<p>上面的三个矢量描述合并在一起就是视图矩阵。</p>
+<p>视图矩阵可以被用来表示观察者的状态，最终会被传递给顶点着色器。</p>
+<p>（这里用gl-matrix来计算视图矩阵）</p>
+<p>eye: vec3  代表视点；</p>
+<p>at: vec3  代表观察目标点；</p>
+<p>up: vec3 代表上方向；</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// mat4.looAt(out, eye, at, up)</span><br><span class="line">const viewMatrix = mat4.lookAt(mat4.create(), eye, at, up);</span><br></pre></td></tr></table></figure>
+
+<h2 id="投影矩阵"><a href="#投影矩阵" class="headerlink" title="投影矩阵"></a>投影矩阵</h2><p><img src="/images/webgl/webgl10.png" alt="webgl"></p>
+<p>WebGL模拟了人的观察物体的方式（人类只能看到眼前的东西，水平视角大约200度左右）。</p>
+<p>WebGL限制了“能够看多远”，定义了可视空间的概念，包括水平视角、垂直视角和可视深度。</p>
+<p>两类常用的可视空间：</p>
+<ul>
+<li>长方形可视空间，也称盒状空间，由正交投影产生。</li>
+<li>金字塔可视空间，由透视投影产生。</li>
+</ul>
+<h3 id="正交投影：-定义盒状空间"><a href="#正交投影：-定义盒状空间" class="headerlink" title="正交投影： 定义盒状空间"></a>正交投影： 定义盒状空间</h3><ul>
+<li>left  right 指定近裁剪面的左右边界</li>
+<li>bottom top 指定近裁剪面的上下边界</li>
+<li>near far 指定近裁剪面和远裁剪面的位置，及可视空间的近边界和远边界。</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 正交投影矩阵 </span><br><span class="line">const projMatrix = mat4.ortho(mat4.create(),left, right, bottom, top, near, far);</span><br></pre></td></tr></table></figure>
+<p><img src="/images/webgl/webgl11.png" alt="webgl"></p>
+<h3 id="透视投影：-定义金字塔空间"><a href="#透视投影：-定义金字塔空间" class="headerlink" title="透视投影： 定义金字塔空间"></a>透视投影： 定义金字塔空间</h3><ul>
+<li>fov 指定垂直视角（角度）</li>
+<li>aspect 近裁剪面的宽高比</li>
+<li>near far 近裁剪面和远裁剪面的位置</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 透视投影矩阵 </span><br><span class="line">const projMatrix2 = mat4.perspective(mat4.create(), fov, aspect, near, far);</span><br></pre></td></tr></table></figure>
+<p><img src="/images/webgl/webgl12.png" alt="webgl"></p>
+<p>一般来说，模型矩阵、视图矩阵、投影矩阵都会传递给顶点着色器，对gl_position做处理。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">// 顶点着色器</span><br><span class="line">precision mediump float;</span><br><span class="line">attribute vec4 a_Position;</span><br><span class="line">uniform mat4 u_PrijMatrix; // 投影矩阵</span><br><span class="line">uniform mat4 u_ViewMatrix; // 视图矩阵</span><br><span class="line">uniform mat4 u_ModelMatrix; // 模型矩阵</span><br><span class="line">void main() &#123;</span><br><span class="line">  gl_Position = u_PrijMatrix * u_ViewMatrix * u_ModelMatrix * a_Position;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>但是因为顶点着色器是逐个顶点的运算，为了提升运算性能，我们可以在js代码中将三个矩阵的运算计算好，合并成模型视图投影矩阵，再传递给顶点着色器，这样就不用每个顶点都算一次了。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">// js代码</span><br><span class="line">const matrix = prijMatrix * viewMatrix * modelMatrix</span><br><span class="line">const u_Matrix = gl.getUniformLocation(program, &#x27;u_Matrix&#x27;);</span><br><span class="line">gl.uniformMatrix4fv(u_Matrix, false, matrix);</span><br><span class="line"></span><br><span class="line">// 顶点着色器</span><br><span class="line">precision mediump float;</span><br><span class="line">attribute vec4 a_Position;</span><br><span class="line">uniform mat4 u_Matrix; // 模型视图投影矩阵</span><br><span class="line">void main() &#123;</span><br><span class="line">  gl_Position = u_Matrix * a_Position;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="深度测试-amp-深度冲突"><a href="#深度测试-amp-深度冲突" class="headerlink" title="深度测试 &amp; 深度冲突"></a>深度测试 &amp; 深度冲突</h2><h3 id="隐藏面消除"><a href="#隐藏面消除" class="headerlink" title="隐藏面消除"></a>隐藏面消除</h3><p>WebGL 提供隐藏面消除的功能。这个功能会帮我们清除被遮挡的部分。</p>
+<ol>
+<li>开启隐藏面消除</li>
+</ol>
+<p><code>gl.enable(gl.DEPTH_TEST)</code></p>
+<ol start="2">
+<li>清除深度缓冲区</li>
+</ol>
+<p><code>gl.clear(gl.DEPTH_BUFFER_BIT)</code></p>
+<p>深度缓冲区是一个中间对象（用于存储深度信息）。每一帧绘制前，我们都必须清除深度缓冲区，清除上一帧留下的痕迹。</p>
+<p><img src="/images/webgl/webgl13.png" alt="webgl"></p>
+<h3 id="多边形偏移"><a href="#多边形偏移" class="headerlink" title="多边形偏移"></a>多边形偏移</h3><p>WebGL 提供一种叫多边形偏移的机制用来处理两个表面过于接近，深度缓冲区有限的京都已经不能区分哪个在前面哪个在后面的情况。</p>
+<ol>
+<li>开启多边形偏移</li>
+</ol>
+<p><code>gl.enable(gl.POLYGON_OFFSET_FILL)</code></p>
+<ol start="2">
+<li>绘制前指定用来计算偏移量的参数</li>
+</ol>
+<p><code>gl.polygonOffset(1.0,1.0)</code></p>
+<p><img src="/images/webgl/webgl14.png" alt="webgl"></p>
+<h3 id="多边形剔除"><a href="#多边形剔除" class="headerlink" title="多边形剔除"></a>多边形剔除</h3><p>在一个多边形表面模型中，遮挡剔除就是以多边形内外侧为基准，判断是否绘制这个多边形。</p>
+<p>WebGL中，默认规定遮挡剔除是无效的，无论以怎样的顺序来定义顶点都会绘制全部的多边形。但是，遮挡剔除有效的时候，只有满足特定的条件的多边形才会进行绘制，看不见的部分是不会绘制的，这样就会减弱坐标计算等负担。</p>
+<p><code>gl.enable(gl.CULL_FACE);</code></p>
+<p>多边形的内侧和外侧是根据顶点的连接顺序来判断的，而这个判断基准反过来的情况也是有的，形成多边形的顶点的连接顺序是顺时针的时候是外侧，逆时针的时候为内侧，想要反过来判断的话，顺时针就变成了内侧。</p>
+<p>顺时针统称为CW，因为［顺时针］的英语是ClockWise，CW就是它的头文字。而逆时针统称为CCW，因为［逆时针］的英语为CounterClockWise。改变WebGL中遮挡剔除的内侧和外侧的判断标准的函数是frontFace，参数就是刚才提到的CW和CCW。</p>
+<p>将顺时针设置为［外侧］的代码：<code>gl.frontFace(gl.CW);</code></p>
+<p>将顺时针设置为［内侧］的代码：<code>gl.frontFace(gl.CCW);</code></p>
+<h2 id="gl-drawArrays-amp-gl-drawElements"><a href="#gl-drawArrays-amp-gl-drawElements" class="headerlink" title="gl.drawArrays &amp; gl.drawElements"></a>gl.drawArrays &amp; gl.drawElements</h2><p>我们之前经常一直使用的是gl.drawArrays()来进行绘制。<br>这两者的区别是啥呢？</p>
+<p>之前说webgl中最常用的就是三角形网络。我们想象一下绘制一个正方体，如果按照先前的办法，假设用gl.drawArrays(gl.TRIANGLES)我们定义一个三角形需要三个顶点，定义一个正方体的面需要两个三角形，也就是六个顶点。那么一个正方体需要6*6=36个顶点（如果用gl.drawArrays(gl.TRIANGLE_FAN)需要24个顶点，但必须对每一个面调用一次drawArrays）。但是实际上8个顶点就能构成一个正方体。</p>
+<p>WebGL提供了gl.drawElements()来避免重复定义顶点，保持顶点个数最小。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// mode 指定绘制方式</span><br><span class="line">// count 指定绘制顶点个数</span><br><span class="line">// type 指定索引值数据类型</span><br><span class="line">// offset 索引数组中开始绘制的位置，以字节为单位</span><br><span class="line">gl.drawElements(mode, count, type, offset)</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/webgl/webgl15.png" alt="webgl"></p>
+<ul>
+<li>gl.ARRAY_BUFFER: 普通的缓冲区类型</li>
+<li>gl.ELEMENT_ARRAY_BUFFER：具有索引结构的三位数据模型缓冲区类型</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">// 绘制一个正方体</span><br><span class="line">// 顶点及颜色</span><br><span class="line">const verticesColors = new Float32Array([</span><br><span class="line">  1.0, 1.0, 1.0, 1.0, 1.0, 1.0, // 顶点 + 颜色</span><br><span class="line">  -1.0, 1.0, 1.0, 1.0, 0.0, 1.0，</span><br><span class="line">  ...</span><br><span class="line">  -1.0, -1.0, -1.0, 0.0, 0.0, 0.0, </span><br><span class="line">])</span><br><span class="line">// 顶点绕线顺序 每三个一个三角形</span><br><span class="line">const indices = new Uint8Array([</span><br><span class="line">  0, 1, 2, 0, 2, 3, // 前</span><br><span class="line">  0, 3, 4, 0, 4, 5, // 右</span><br><span class="line">  0, 5, 6, 0, 6, 1, // 上</span><br><span class="line">  1, 6, 7, 1, 7, 2, // 左</span><br><span class="line">  7, 4, 3, 7, 3, 2, // 下</span><br><span class="line">  4, 7, 6, 4, 6, 5, // 后</span><br><span class="line">])</span><br><span class="line">// 创建顶点&amp;颜色缓冲区 </span><br><span class="line">const vertexColorBuffer = gl.createBuffer();</span><br><span class="line">// 创建绕线顺序缓冲区</span><br><span class="line">const indexBuffer = gl.createBuffer();</span><br><span class="line"></span><br><span class="line">// 写入缓冲区。把顶点&amp;颜色数据绑定到ArrayBuffer</span><br><span class="line">gl.bindBuffer(gl.ARRAY_BUFFER, vertexColorBuffer);</span><br><span class="line">gl.bufferData(gl.ARRAY_BUFFER, verticesColors, gl.STATIC_DRAW)</span><br><span class="line"></span><br><span class="line">// 设置颜色和顶点attribute</span><br><span class="line">const size = verticesColors.BYTES_PER_ELEMENT;</span><br><span class="line">const a_Position = gl.getAttribLocation(program, &#x27;a_Position&#x27;);</span><br><span class="line">const a_Color = gl.getAttribLocation(program, &#x27;a_Color&#x27;);</span><br><span class="line">gl.vertexAttribPointer(a_Position, 3, gl.FLOAT, false, size * 6, 0);</span><br><span class="line">gl.enableVertexAttribArray(a_Position);</span><br><span class="line">gl.vertexAttribPointer(a_Color, 3, gl.FLOAT, false, size * 6, size * 3);</span><br><span class="line">gl.enableVertexAttribArray(a_Color);</span><br><span class="line"></span><br><span class="line">// 写入缓冲区。把绕线顺序对象写进ElementArrayBuffer</span><br><span class="line">gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, indexBuffer);</span><br><span class="line">gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, indices, gl.STATIC_DRAW)</span><br><span class="line"></span><br><span class="line">// 绘制正方体</span><br><span class="line">gl.clear(gl.COLOR_BUFFER_BIT);</span><br><span class="line">gl.clear(gl.DEPTH_BUFFER_BIT);</span><br><span class="line">gl.drawElements(gl.TRIANGLES, count, gl.UNSIGNED_BYTE, 0);</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/webgl/webgl16.png" alt="webgl"></p>
+<h2 id="球面坐标系"><a href="#球面坐标系" class="headerlink" title="球面坐标系"></a>球面坐标系</h2><p><img src="/images/webgl/webgl17.png" alt="webgl"></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/webgl/" rel="tag"># webgl</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/webgl_study1/" rel="prev" title="WebGL_入门学习1">
+                  <i class="fa fa-chevron-left"></i> WebGL_入门学习1
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/web_audio1/" rel="next" title="Web audio 学习笔记（入门）">
+                  Web audio 学习笔记（入门） <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zhaha</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

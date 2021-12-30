@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.8.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="前端音频播放一般有两种方式： dom &amp; web audio Dom 的方式比较简单，直接利用 dom 标签和 dom api 控制音频的播放  Web Audio API并不是替代audio 标签的东西，换句话说Web Audio API其实是对audio 标签功能上的补充。二者的关系可以类比img标签与canvas 标签。具体改选用哪个取决于你的目的是什么。如果只是为了简单地控制音频的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Web audio 学习笔记（入门）">
+<meta property="og:url" content="http://example.com/posts/web_audio1/index.html">
+<meta property="og:site_name" content="zhaha&#39;s blog">
+<meta property="og:description" content="前端音频播放一般有两种方式： dom &amp; web audio Dom 的方式比较简单，直接利用 dom 标签和 dom api 控制音频的播放  Web Audio API并不是替代audio 标签的东西，换句话说Web Audio API其实是对audio 标签功能上的补充。二者的关系可以类比img标签与canvas 标签。具体改选用哪个取决于你的目的是什么。如果只是为了简单地控制音频的">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/images/webAudio/WechatIMG12238.jpeg">
+<meta property="og:image" content="http://example.com/images/webAudio/WechatIMG12239.png">
+<meta property="og:image" content="http://example.com/images/webAudio/WechatIMG12240.png">
+<meta property="og:image" content="http://example.com/images/webAudio/WechatIMG12241.png">
+<meta property="og:image" content="http://example.com/images/webAudio/WechatIMG12242.png">
+<meta property="og:image" content="http://example.com/images/webAudio/WechatIMG12243.png">
+<meta property="og:image" content="http://example.com/images/webAudio/WechatIMG12245.png">
+<meta property="og:image" content="http://example.com/images/webAudio/WechatIMG12246.png">
+<meta property="og:image" content="http://example.com/images/webAudio/WechatIMG12247.png">
+<meta property="og:image" content="http://example.com/images/webAudio/WechatIMG12248.png">
+<meta property="article:published_time" content="2021-01-12T05:18:24.000Z">
+<meta property="article:modified_time" content="2021-11-30T12:51:53.658Z">
+<meta property="article:author" content="zhaha">
+<meta property="article:tag" content="WebAudio">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/images/webAudio/WechatIMG12238.jpeg">
+
+
+<link rel="canonical" href="http://example.com/posts/web_audio1/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/posts/web_audio1/","path":"posts/web_audio1/","title":"Web audio 学习笔记（入门）"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Web audio 学习笔记（入门） | zhaha's blog</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">zhaha's blog</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80"><span class="nav-number">1.</span> <span class="nav-text">基础</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#AudioNode"><span class="nav-number">1.1.</span> <span class="nav-text">AudioNode</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E7%9A%84%E5%87%A0%E7%A7%8DAudioNode"><span class="nav-number">1.2.</span> <span class="nav-text">常用的几种AudioNode</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%9F%B3%E6%BA%90%E8%8A%82%E7%82%B9%EF%BC%88%E4%B8%8B%E6%96%87%E4%BB%8B%E7%BB%8D%EF%BC%89"><span class="nav-number">1.2.1.</span> <span class="nav-text">音源节点（下文介绍）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#AudioDestinationNode%EF%BC%9A-%E8%BE%93%E5%87%BA%E7%9B%AE%E7%9A%84%E5%9C%B0%E8%8A%82%E7%82%B9"><span class="nav-number">1.2.2.</span> <span class="nav-text">AudioDestinationNode： 输出目的地节点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#GainNode%EF%BC%9A%E9%9F%B3%E9%87%8F%E8%B0%83%E8%8A%82%E5%99%A8"><span class="nav-number">1.2.3.</span> <span class="nav-text">GainNode：音量调节器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DynamicsCompressorNode%EF%BC%9A%E5%8A%A8%E6%80%81%E5%8E%8B%E7%BC%A9%E5%99%A8"><span class="nav-number">1.2.4.</span> <span class="nav-text">DynamicsCompressorNode：动态压缩器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#BiquadFilterNode%EF%BC%9A%E7%AE%80%E5%8D%95%E4%BD%8E%E9%A2%91%E6%BB%A4%E6%B3%A2%E5%99%A8"><span class="nav-number">1.2.5.</span> <span class="nav-text">BiquadFilterNode：简单低频滤波器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%EF%BC%9A"><span class="nav-number">1.2.6.</span> <span class="nav-text">其他：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AudioParam"><span class="nav-number">1.3.</span> <span class="nav-text">AudioParam</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%B5%8B%E5%80%BC%E6%96%B9%E5%BC%8F"><span class="nav-number">1.3.1.</span> <span class="nav-text">赋值方式</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%AF%E4%BB%A5%E8%A2%AB%E6%92%AD%E6%94%BE%E7%9A%84%E9%9F%B3%E6%BA%90"><span class="nav-number">2.</span> <span class="nav-text">可以被播放的音源</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%9E%E6%8E%A5%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA"><span class="nav-number">3.</span> <span class="nav-text">连接输入输出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E4%B8%AA%E6%9C%80%E7%AE%80%E5%8D%95%E7%9A%84%E6%92%AD%E6%94%BEweb-audio-%E6%B5%81%E7%A8%8B%EF%BC%88PCM%E6%BA%90%EF%BC%89"><span class="nav-number">4.</span> <span class="nav-text">一个最简单的播放web audio 流程（PCM源）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E5%8E%9F%E7%94%9FaudioContext"><span class="nav-number">4.1.</span> <span class="nav-text">获取原生audioContext</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8A%A0%E8%BD%BDweb-audio"><span class="nav-number">4.2.</span> <span class="nav-text">加载web audio</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#decode%E8%A7%A3%E7%A0%81"><span class="nav-number">4.3.</span> <span class="nav-text">decode解码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A3%B0%E9%9F%B3%E6%92%AD%E6%94%BE"><span class="nav-number">4.4.</span> <span class="nav-text">声音播放</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#creatBuffer-%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="nav-number">4.5.</span> <span class="nav-text">creatBuffer()的使用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A8%A1%E6%8B%9F%E6%A0%87%E7%AD%BE%E7%9A%84%E6%92%AD%E6%94%BE%E6%96%B9%E5%BC%8F"><span class="nav-number">5.</span> <span class="nav-text">模拟标签的播放方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E5%8E%9F%E7%94%9FaudioContext-1"><span class="nav-number">5.1.</span> <span class="nav-text">获取原生audioContext</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B0%E5%BB%BAAudio%E5%AF%B9%E8%B1%A1"><span class="nav-number">5.2.</span> <span class="nav-text">新建Audio对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE%E8%B7%A8%E5%9F%9F"><span class="nav-number">5.3.</span> <span class="nav-text">设置跨域</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E6%92%AD%E6%94%BE%E6%BA%90"><span class="nav-number">5.4.</span> <span class="nav-text">创建播放源</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E5%8F%AF%E8%A7%86%E5%8C%96%E8%8A%82%E7%82%B9"><span class="nav-number">5.5.</span> <span class="nav-text">创建可视化节点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%9E%E6%8E%A5%E6%92%AD%E6%94%BE%E5%99%A8"><span class="nav-number">5.6.</span> <span class="nav-text">连接播放器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%87%AA%E5%8A%A8%E6%92%AD%E6%94%BE"><span class="nav-number">5.7.</span> <span class="nav-text">自动播放</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">zhaha</p>
+  <div class="site-description" itemprop="description">Growing front-end engineer.</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/posts/web_audio1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="zhaha">
+      <meta itemprop="description" content="Growing front-end engineer.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zhaha's blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Web audio 学习笔记（入门）
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-01-12 13:18:24" itemprop="dateCreated datePublished" datetime="2021-01-12T13:18:24+08:00">2021-01-12</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-11-30 20:51:53" itemprop="dateModified" datetime="2021-11-30T20:51:53+08:00">2021-11-30</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/note/" itemprop="url" rel="index"><span itemprop="name">note</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>前端音频播放一般有两种方式： dom &amp; web audio</p>
+<p>Dom 的方式比较简单，直接利用 dom 标签和 dom api 控制音频的播放 </p>
+<p>Web Audio API并不是替代<code>audio</code> 标签的东西，换句话说Web Audio API其实是对<code>audio</code> 标签功能上的补充。二者的关系可以类比<code>img</code>标签与<code>canvas</code> 标签。具体改选用哪个取决于你的目的是什么。如果只是为了简单地控制音频的播放的话，<code>audio</code>标签更适合吧。但是如果有更复杂的音频处理需求的话，就必须使用Web Audio API。</p>
+<blockquote>
+<p>注：</p>
+<ol>
+<li>使用前要对web audio的兼容性进行判断，下文中有示例</li>
+<li>如果要实现自动播放，要注意一些端（eg: chrome浏览器）会限制自动播放，必须有用户交互后才可以播放音频，需要在用户交互的回调里去播放声音。</li>
+</ol>
+</blockquote>
+<h2 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h2><p><img src="/images/webAudio/WechatIMG12238.jpeg" alt="webAudio"></p>
+<p>一个 web audio 本质上是由一系列的 <strong>AudioNode</strong> 组成，<strong>多个节点构成类似链表一样的结构</strong>，有入口和出口。从一个或者多个音源出发，经过一个或者多个处理节点，最终输出到输出节点（输出终端，一般是扬声器）。（如果有需求的话，也可以不指定输出节点。例如，想把音频数据用图表的形式展现的场合等。）web audio的一个简单的典型的流程类是下面这样子：</p>
+<ol>
+<li>创建AudioContext对象</li>
+<li>在AudioContext对象内设置音源，例如<code>audio</code>标签，震动发声器，音频流</li>
+<li>创建effect node（效果节点）。例如reverb, biquad filter, panner, compressor（这些都是音频特效）</li>
+<li>选择音频的最终输出节点。例如，你的电脑的扬声器</li>
+<li>音频经过效果节点处理后，然后输出到下一个节点，这些节点连接起来</li>
+</ol>
+<p><img src="/images/webAudio/WechatIMG12239.png" alt="webAudio"></p>
+<h3 id="AudioNode"><a href="#AudioNode" class="headerlink" title="AudioNode"></a>AudioNode</h3><p>这是一种由 AudioContext 生成的基本对象，用于生成或者处理音频波形数据。</p>
+<p>AudioContext 提供很多特定的 AudioNode 可供使用，例如均衡器、滤波器、振荡器……</p>
+<p>AudioNode 大体可分3类。</p>
+<ul>
+<li><p>第一种：作为<strong>声音源头</strong>的AudioNode，用于存储或生成声音（SourceNode，下文的可以被播放的声源中会介绍）：<br><img src="/images/webAudio/WechatIMG12240.png" alt="webAudio"></p>
+</li>
+<li><p>第二种：作为<strong>过滤器</strong>的AudioNode，会对输入（In）的声音进行处理之后再输出（Out）。<br>（有些 AudioNode 可以有多个输入（In），然后对它们做混音后再输出。）<br><img src="/images/webAudio/WechatIMG12241.png" alt="webAudio"></p>
+</li>
+<li><p>第三种：<strong>destination</strong>是特殊的AudioNode，它收到声音之后会直接传到耳机或扬声器，让我们最终听到声音。<br><img src="/images/webAudio/WechatIMG12242.png" alt="webAudio"></p>
+</li>
+</ul>
+<h3 id="常用的几种AudioNode"><a href="#常用的几种AudioNode" class="headerlink" title="常用的几种AudioNode"></a>常用的几种AudioNode</h3><h4 id="音源节点（下文介绍）"><a href="#音源节点（下文介绍）" class="headerlink" title="音源节点（下文介绍）"></a>音源节点（下文介绍）</h4><h4 id="AudioDestinationNode：-输出目的地节点"><a href="#AudioDestinationNode：-输出目的地节点" class="headerlink" title="AudioDestinationNode： 输出目的地节点"></a>AudioDestinationNode： 输出目的地节点</h4><p><code>audioContext.destination</code></p>
+<p>定义了最后音频要输出到哪里，通常是输出到你的扬声器。</p>
+<h4 id="GainNode：音量调节器"><a href="#GainNode：音量调节器" class="headerlink" title="GainNode：音量调节器"></a>GainNode：音量调节器</h4><p>这个节点就是用来调节音量大小的。这是我们非常常用的一个AudioNode，下面的介绍也很多用这个节点举例。<br>创建方法：<code>audioContext.createGain()</code></p>
+<p>当我们想调节音量的时候，需要把这个节点连接到节点上:<code>sourceNode.connect(gainNode)</code></p>
+<p>当我们想静音时，只需要把GainNode和前面的节点切断就行:<code>sourceNode.disConnect(gainNode)</code></p>
+<p>调节音量值: <code>GainNode.gain</code> 这是一个AudioParam对象（下文介绍）</p>
+<h4 id="DynamicsCompressorNode：动态压缩器"><a href="#DynamicsCompressorNode：动态压缩器" class="headerlink" title="DynamicsCompressorNode：动态压缩器"></a>DynamicsCompressorNode：动态压缩器</h4><p>用于把多个音源实时混音，并防止爆音</p>
+<ol>
+<li><code>const compressorNode = audioContext.createDynamicsCompressor();</code></li>
+<li><code>sourceNode1.connect(compressorNode);</code></li>
+<li><code>sourceNode2.connect(compressorNode);</code></li>
+<li><code>sourceNode3.connect(compressorNode);</code></li>
+<li><code>compressorNode.connect(audioContext.destination);</code><br>虽然可以把多个 Node 直接 connect 到 audioContext.destination，但是不建议这么做，因为这样可能会出现爆音现象。若有同时播放多个声音的需求（例如一个游戏的各种音效），记得通过 DynamicsCompressorNode 混合多个声音。</li>
+</ol>
+<h4 id="BiquadFilterNode：简单低频滤波器"><a href="#BiquadFilterNode：简单低频滤波器" class="headerlink" title="BiquadFilterNode：简单低频滤波器"></a>BiquadFilterNode：简单低频滤波器</h4><p>首先，使用<code>context.createBiquadFilter</code>方法建立过滤器实例。</p>
+<p><code>const filter = audioContext.createBiquadFilter()</code></p>
+<p>然后，通过filter.type属性指定过滤器的类型。</p>
+<p><code>filter.type = &#39;lowpass&#39;;</code></p>
+<p>目前，滤波器有以下这些类型。<br>• lowpass：标准二阶谐振低通滤波器，具有12dB /倍频程衰减。截止频率以下的频率通过；高于它的频率被衰减。<br>• highpass：标准二阶谐振高通滤波器，具有12dB /倍频程衰减。截止频率以下的频率被衰减；高于它的频率通过。<br>• bandpass： 标准的二阶带通滤波器。给定频率范围之外的频率会衰减；它内部的频率通过。<br>• lowshelf： 标准二阶低架滤波器管理器。低于频率的频率会增强或衰减；频率不变。<br>• highshelf： 标准的二阶高架过滤器。高于频率的频率会增强或衰减；低于它的频率不变。<br>• peaking： 范围内的频率会增加或衰减。外面的频率不变。<br>• notch： 标准陷波滤波器，也称为带阻或带阻滤波器。与带通滤波器相反：超出给定频率范围的频率通过；内部的频率被衰减。<br>• allpass： 标准二阶全通滤波器。它允许所有频率通过，但会更改各个频率之间的相位关系。</p>
+<p>然后指定过滤器的频率（frequency）属性（也是一个AudioParam）。</p>
+<p><code>filter.frequency.value = frequency</code></p>
+<p>最后，过滤器实例连接节点实例，就可以生效了。</p>
+<p><code>sourceNode.connect(filter);</code></p>
+<h4 id="其他："><a href="#其他：" class="headerlink" title="其他："></a>其他：</h4><p>还有很多用于处理音效，数据分析和可视化，分离、合并声道，处理声音空间效果（3d会用）的节点，这里不赘述，可以参考<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Web_Audio_API">web_audio_api</a></p>
+<h3 id="AudioParam"><a href="#AudioParam" class="headerlink" title="AudioParam"></a>AudioParam</h3><p>大多数AudioNode的参数类型都是AudioParam。</p>
+<h4 id="赋值方式"><a href="#赋值方式" class="headerlink" title="赋值方式"></a>赋值方式</h4><ol>
+<li><p>直接赋值：通过AudioParam.value</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 这里用GainNode举例</span></span><br><span class="line">gainNode.gain.value = <span class="number">0.4</span>; <span class="comment">// 设置这个节点的音量大小为0.4</span></span><br></pre></td></tr></table></figure></li>
+<li><p>通过赋值函数赋值<br>AudioParam提供了很多赋值函数，可以实现各种渐变效果的赋值。（例如声音渐渐变大）</p>
+</li>
+</ol>
+<ul>
+<li><code>AudioParam.setValueAtTime(value, startTime)</code></li>
+</ul>
+<p>在一个确切的时间点，更改值，新的值会传递给value。</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 马上把声音大小变为1</span></span><br><span class="line">gainNode.gain.setValueAtTime(<span class="number">1</span>, audioContext.currentTime + <span class="number">0</span>);</span><br></pre></td></tr></table></figure>
+<p><img src="/images/webAudio/WechatIMG12243.png" alt="webAudio"></p>
+<ul>
+<li><code>AudioParam.linearRampToValueAtTime(value, endTime)</code></li>
+</ul>
+<p>逐渐按线性变化。这个改变会从上一个事件指定的事件开始，跟随一个线性“斜坡”到参数给的新值，并在 endTime 参数给定的时间到达新值。</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 线性把声音大小变为1 （时长1s）</span></span><br><span class="line">gainNode.gain.linearRampToValueAtTime(<span class="number">1</span>, audioContext.currentTime + <span class="number">1</span>);</span><br></pre></td></tr></table></figure>
+<p><img src="/images/webAudio/WechatIMG12245.png" alt="webAudio"></p>
+<ul>
+<li><code>AudioParam.exponentialRampToValueAtTime(value, endTime)</code></li>
+</ul>
+<p>逐渐按指数变化。这个改变会从上一个事件指定的值开始，跟随一个指数“斜坡”变化到参数给的新值，并在 endTime 参数给定的时间到达新值。</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 指数型把声音大小变为1 （时长2s）</span></span><br><span class="line">gainNode.gain.exponentialRampToValueAtTime(<span class="number">1</span>, audioContext.currentTime + <span class="number">2</span>);</span><br></pre></td></tr></table></figure>
+<p><img src="/images/webAudio/WechatIMG12246.png" alt="webAudio"></p>
+<ul>
+<li><code>AudioParam.setTargetAtTime(target, startTime, timeConstant)</code></li>
+</ul>
+<p>开始计划改变值。这个改变将从 startTime 指定的时间开始，并且以指定的方式向目标参数给定的值改变。指数衰减速率由 timeConstant 参数定义，timeConstant 参数使以秒作为测量单位的时间。</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 在一秒后把声音大小按指数变为1，衰减率为0.01</span></span><br><span class="line">gainNode.gain.setTargetAtTime(<span class="number">1</span>, audioContext.currentTime + <span class="number">1</span>, <span class="number">0.01</span>);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p><code>AudioParam.setValueCurveAtTime(values, startTime, duration)</code><br>在一段时间之内按照数组内的值一个个地平滑变化,，从 startTime开始并持续duration。 </p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 在10秒内，声音大小由0.0-&gt;0.2-&gt;0.5-&gt;0.1</span></span><br><span class="line">gainNode.gain.setValueCurveAtTime([<span class="number">0.0</span>,<span class="number">0.2</span>,<span class="number">0.5</span>,<span class="number">0.1</span>], ctx.currentTime + <span class="number">0</span>, <span class="number">10</span>);</span><br></pre></td></tr></table></figure></li>
+<li><p><code>AudioParam.cancelScheduledValues(startTime)</code></p>
+</li>
+</ul>
+<p>取消全部在 AudioParam未来计划发生的改变。</p>
+<h2 id="可以被播放的音源"><a href="#可以被播放的音源" class="headerlink" title="可以被播放的音源"></a>可以被播放的音源</h2><p>创建的音源也是继承自AudioNode，也是AudioNode的一种。下面的几个生成 都是音源节点。</p>
+<ul>
+<li><p>使用震动发声器与JavaScript创建音源的情况：使用<a target="_blank" rel="noopener" href="https://developer.mozilla.org/ja/docs/Web/API/BaseAudioContext/createOscillator">AudioContext.createOscillator</a>这个方法创建<a target="_blank" rel="noopener" href="https://developer.mozilla.org/ja/docs/Web/API/OscillatorNode">OscillatorNode</a>。之后就可以利用震动发声器做音源了。（生成OscillatorNode）</p>
+</li>
+<li><p>使用原始的PCM数据的情况：如果是可以识别的特定的格式的话（mp3之类的），使用AudioContext的特定的decode方法，来获得PCM数据。详细情况可以看这些，<a target="_blank" rel="noopener" href="https://developer.mozilla.org/ja/docs/Web/API/BaseAudioContext/createBuffer">AudioContext.createBuffer()</a>、<a target="_blank" rel="noopener" href="https://developer.mozilla.org/ja/docs/Web/API/BaseAudioContext/createBufferSource">AudioContext.createBufferSource()</a>、<a target="_blank" rel="noopener" href="https://developer.mozilla.org/ja/docs/Web/API/BaseAudioContext/decodeAudioData">AudioContext.decodeAudioData()</a> 。（生成SourceNode）</p>
+</li>
+<li><p>使用<code>video</code>标签或者<code>audio</code>标签等HTML元素的情况：<a target="_blank" rel="noopener" href="https://developer.mozilla.org/ja/docs/Web/API/AudioContext/createMediaElementSource">AudioContext.createMediaElementSource()</a> （生成MediaElementAudioSourceNode）</p>
+</li>
+<li><p>从<a target="_blank" rel="noopener" href="https://developer.mozilla.org/ja/docs/Web/API/MediaStream">WebRTC MediaStream</a>（WebRTC媒体流）输入音频源的情况：可以使用麦克风或者Web摄像头。具体情况看这个，<a target="_blank" rel="noopener" href="https://developer.mozilla.org/ja/docs/Web/API/AudioContext/createMediaStreamSource">AudioContext.createMediaStreamSource()</a>（生成MediaStreamAudioSourceNode）</p>
+</li>
+</ul>
+<p>注：一般来说，作为<strong>声音源头</strong>（SourceNode）的 AudioNode ，它的声音播放完毕后(ended结束事件)，它自身会立即销毁。若需要再次播放，必须重新创建它。</p>
+<h2 id="连接输入输出"><a href="#连接输入输出" class="headerlink" title="连接输入输出"></a>连接输入输出</h2><p>要想音源（输入）通过扬声器（输出）播放出来，就必须要把两者连接起来。我们通过 <code>.connect()</code> 连接两个节点，被连接的节点作为参数。</p>
+<p>（这里以souce =&gt; gain =&gt; destination连接为例）</p>
+<p>• 先创建一个震动发生器声源</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> oscillatorNode = audioCtx.createOscillator();</span><br></pre></td></tr></table></figure>
+<p>• 连接一个音量控制器节点</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建音量控制器</span></span><br><span class="line"><span class="keyword">const</span> gainNode = audioCtx.createGain();</span><br><span class="line"><span class="comment">// souce =&gt; gainNode</span></span><br><span class="line">oscillatorNode.connect(gainNode);</span><br></pre></td></tr></table></figure>
+<p>• 连接到输出节点</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// souce =&gt; destination</span></span><br><span class="line">gainNode.connect(audioCtx.destination);</span><br></pre></td></tr></table></figure>
+<h2 id="一个最简单的播放web-audio-流程（PCM源）"><a href="#一个最简单的播放web-audio-流程（PCM源）" class="headerlink" title="一个最简单的播放web audio 流程（PCM源）"></a>一个最简单的播放web audio 流程（PCM源）</h2><p>特定格式文件（如mp3）加载后生成arraybuffer，使用AudioContext的特定的decode方法，来获得PCM数据作为音源。并连接到输出节点。</p>
+<h3 id="获取原生audioContext"><a href="#获取原生audioContext" class="headerlink" title="获取原生audioContext"></a>获取原生audioContext</h3><p><code>const audioContext = new AudioContext();</code></p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 用更安全的方式判断web audio的兼容性</span></span><br><span class="line"><span class="keyword">const</span> webAudioEnabled = !!(<span class="built_in">window</span>[<span class="string">&#x27;AudioContext&#x27;</span>] || <span class="built_in">window</span>[<span class="string">&#x27;webkitAudioContext&#x27;</span>] || <span class="built_in">window</span>[<span class="string">&#x27;mozAudioContext&#x27;</span>]);</span><br><span class="line"><span class="keyword">const</span> ctx: AudioContext = WebAudio.webAudioEnabled</span><br><span class="line">    ? <span class="keyword">new</span> (<span class="built_in">window</span>[<span class="string">&#x27;AudioContext&#x27;</span>] || <span class="built_in">window</span>[<span class="string">&#x27;webkitAudioContext&#x27;</span>] || <span class="built_in">window</span>[<span class="string">&#x27;mozAudioContext&#x27;</span>])()</span><br><span class="line">    : <span class="literal">undefined</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="加载web-audio"><a href="#加载web-audio" class="headerlink" title="加载web audio"></a>加载web audio</h3><p>responseType 要为 arrayBuffer 类型</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> request = <span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line">    request.open(<span class="string">&#x27;GET&#x27;</span>, url, <span class="literal">true</span>);</span><br><span class="line">    request.responseType = <span class="string">&#x27;arraybuffer&#x27;</span>;</span><br><span class="line">    request.onload = <span class="function">(<span class="params">arrayBuffer</span>) =&gt;</span> &#123;</span><br><span class="line">       <span class="comment">//... </span></span><br><span class="line">    &#125;;</span><br><span class="line">    request.onerror = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">       <span class="comment">//...</span></span><br><span class="line">    &#125;;</span><br><span class="line">    request.send();</span><br></pre></td></tr></table></figure>
+
+<h3 id="decode解码"><a href="#decode解码" class="headerlink" title="decode解码"></a>decode解码</h3><p>将arrayBuffer 转换为 audioBuffer</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">audioContext.decodeAudioData(</span><br><span class="line">  arrayBuffer,</span><br><span class="line">  <span class="function">(<span class="params">audioBuffer: AudioBuffer</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// 解码成功回调 </span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// 解码失败回调</span></span><br><span class="line">  &#125;</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>一个AudioBuffer数据<br><img src="/images/webAudio/WechatIMG12247.png" alt="webAudio"></p>
+<h3 id="声音播放"><a href="#声音播放" class="headerlink" title="声音播放"></a>声音播放</h3><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 生成一个声源节点</span></span><br><span class="line"><span class="keyword">const</span> node = audioContext.createBufferSource();</span><br><span class="line"><span class="comment">// 将声音数组的内存对象，放入这个节点</span></span><br><span class="line">node.buffer = audioBuffer;</span><br><span class="line"><span class="comment">// 将声音上下文与节点连接</span></span><br><span class="line">node.connect(audioContext.destination);</span><br><span class="line"><span class="comment">// 开始播放声音</span></span><br><span class="line">node.start(audioContext.currentTime);</span><br></pre></td></tr></table></figure>
+
+<h3 id="creatBuffer-的使用"><a href="#creatBuffer-的使用" class="headerlink" title="creatBuffer()的使用"></a>creatBuffer()的使用</h3><p>我们也可以不通过特定格式文件获取AudioBuffer，也可以通过自己创建AudioBuffer对象</p>
+<p><code>context.createBuffer()</code>方法生成一个内存的操作视图（空的AudioBuffer对象），用于存放数据。</p>
+<p><code>const buffer = audioContext.createBuffer(channels, signalLength, sampleRate);</code></p>
+<p><code>createBuffer</code>方法接受三个参数。<br>• channels：整数，表示声道。创建单声道的声音，该值为 1。<br>• signalLength：整数，表示声音数组的长度。<br>• sampleRate：浮点数，表示取样率，即一秒取样多少次。</p>
+<p><code>signalLength和sampleRate</code>这两个参数决定了声音的长度。比如，如果取样率是1/3000（每秒取样3000次），声音数组长度是6000，那么播放的声音是2秒长度。</p>
+<ol>
+<li>接着，使用buffer.getChannelData方法取出一个声道。</li>
+</ol>
+<p><code>const data = buffer.getChannelData(0)</code></p>
+<p>上面代码中，buffer.getChannelData的参数0表示取出第一个声道。</p>
+<ol start="2">
+<li><p>下一步，将声音数组放入这个声道。</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> data = buffer.getChannelData(<span class="number">0</span>)</span><br><span class="line"><span class="comment">// singal 是一个声音数组</span></span><br><span class="line"><span class="comment">// singalLengal 是该数组的长度</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; signalLength; i += <span class="number">1</span>) &#123;</span><br><span class="line">   data[i] = signal[i]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>最后，使用context.createBufferSource方法生成一个声音节点并播放声音。</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 生成一个声音节点</span></span><br><span class="line"><span class="keyword">const</span> node = audioContext.createBufferSource();</span><br><span class="line"><span class="comment">// 将声音数组的内存对象，放入这个节点</span></span><br><span class="line">node.buffer = buffer;</span><br><span class="line"><span class="comment">// 将声音上下文与节点连接</span></span><br><span class="line">node.connect(audioContext.destination);</span><br><span class="line"><span class="comment">// 开始播放声音</span></span><br><span class="line">node.start(audioContext.currentTime);</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="模拟标签的播放方式"><a href="#模拟标签的播放方式" class="headerlink" title="模拟标签的播放方式"></a>模拟<audio>标签的播放方式</h2><h3 id="获取原生audioContext-1"><a href="#获取原生audioContext-1" class="headerlink" title="获取原生audioContext"></a>获取原生audioContext</h3><p><code>const audioContext = new AudioContext();</code></p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 用更安全的方式判断web audio的兼容性</span></span><br><span class="line"><span class="keyword">const</span> webAudioEnabled = !!(<span class="built_in">window</span>[<span class="string">&#x27;AudioContext&#x27;</span>] || <span class="built_in">window</span>[<span class="string">&#x27;webkitAudioContext&#x27;</span>] || <span class="built_in">window</span>[<span class="string">&#x27;mozAudioContext&#x27;</span>]);</span><br><span class="line"><span class="keyword">const</span> ctx: AudioContext = WebAudio.webAudioEnabled</span><br><span class="line">    ? <span class="keyword">new</span> (<span class="built_in">window</span>[<span class="string">&#x27;AudioContext&#x27;</span>] || <span class="built_in">window</span>[<span class="string">&#x27;webkitAudioContext&#x27;</span>] || <span class="built_in">window</span>[<span class="string">&#x27;mozAudioContext&#x27;</span>])()</span><br><span class="line">    : <span class="literal">undefined</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="新建Audio对象"><a href="#新建Audio对象" class="headerlink" title="新建Audio对象"></a>新建Audio对象</h3><p><code>const audio = new Audio();</code></p>
+<h3 id="设置跨域"><a href="#设置跨域" class="headerlink" title="设置跨域"></a>设置跨域</h3><p><code>audio.crossOrigin = &#39;anonymous&#39;;</code></p>
+<p>如果是线上资源的话，要求资源是允许跨域的，不然还是播放失败.</p>
+<p><img src="/images/webAudio/WechatIMG12248.png" alt="webAudio"></p>
+<h3 id="创建播放源"><a href="#创建播放源" class="headerlink" title="创建播放源"></a>创建播放源</h3><p><code>const source = audioContext.createMediaElementSource(audio);</code></p>
+<h3 id="创建可视化节点"><a href="#创建可视化节点" class="headerlink" title="创建可视化节点"></a>创建可视化节点</h3><p><code>const analyser = audioContext.createAnalyser();</code></p>
+<p>有了这个之后可以获取当前声音的音频数据,用法：</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> dataArray = <span class="keyword">new</span> <span class="built_in">Uint8Array</span>(analyser.frequencyBinCount);</span><br><span class="line">analyser.getByteFrequencyData(dataArray);</span><br></pre></td></tr></table></figure>
+
+<h3 id="连接播放器"><a href="#连接播放器" class="headerlink" title="连接播放器"></a>连接播放器</h3><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">source.connect(analyser);</span><br><span class="line">analyser.connect(audioContext.destination);</span><br></pre></td></tr></table></figure>
+
+<h3 id="自动播放"><a href="#自动播放" class="headerlink" title="自动播放"></a>自动播放</h3><p>在web上可以通过模拟点击实现交互，然后使audioContext处于running状态<br><code>document.body.click();</code><br>在微信上使用微信的SDK，<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_34304013/article/details/88986304">https://blog.csdn.net/weixin_34304013/article/details/88986304</a><br>在抖音，头条等环境是允许自动播放的（IOS也可以），不用额外的设置。</p>
+<p>参考资料：<br><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Web_Audio_API">https://developer.mozilla.org/zh-CN/docs/Web/API/Web_Audio_API</a><br><a target="_blank" rel="noopener" href="http://mdn.github.io/violent-theremin/">http://mdn.github.io/violent-theremin/</a><br><a target="_blank" rel="noopener" href="https://benzleung.gitbooks.io/web-audio-api-mini-guide/content/chapter1.html">https://benzleung.gitbooks.io/web-audio-api-mini-guide/content/chapter1.html</a></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/WebAudio/" rel="tag"># WebAudio</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/webgl_study2/" rel="prev" title="WebGL_入门学习2">
+                  <i class="fa fa-chevron-left"></i> WebGL_入门学习2
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/webgl_study3/" rel="next" title="WebGL_入门学习3">
+                  WebGL_入门学习3 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zhaha</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,1853 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.8.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="Growing front-end engineer.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="zhaha&#39;s blog">
+<meta property="og:url" content="http://example.com/index.html">
+<meta property="og:site_name" content="zhaha&#39;s blog">
+<meta property="og:description" content="Growing front-end engineer.">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="zhaha">
+<meta property="article:tag" content="typescript">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":true,"isPost":false,"lang":"zh-CN","comments":"","permalink":"","path":"index.html","title":""}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>zhaha's blog</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">zhaha's blog</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">zhaha</p>
+  <div class="site-description" itemprop="description">Growing front-end engineer.</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/posts/0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="zhaha">
+      <meta itemprop="description" content="Growing front-end engineer.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zhaha's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/posts/0/" class="post-title-link" itemprop="url">未命名</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-12-24 17:29:06 / 修改时间：17:29:28" itemprop="dateCreated datePublished" datetime="2021-12-24T17:29:06+08:00">2021-12-24</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/posts/mac_frontend_config/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="zhaha">
+      <meta itemprop="description" content="Growing front-end engineer.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zhaha's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/posts/mac_frontend_config/" class="post-title-link" itemprop="url">MAC前端环境配置手册</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-12-10 00:05:25" itemprop="dateCreated datePublished" datetime="2021-12-10T00:05:25+08:00">2021-12-10</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-12-30 17:58:55" itemprop="dateModified" datetime="2021-12-30T17:58:55+08:00">2021-12-30</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/summary/" itemprop="url" rel="index"><span itemprop="name">summary</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <blockquote>
+<p>通过本文，你可以快速搭建mac前端开发环境</p>
+<p>标记✨的建议一定进行安装or配置</p>
+</blockquote>
+<h2 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h2><h3 id="✨Xcode"><a href="#✨Xcode" class="headerlink" title="✨Xcode"></a>✨Xcode</h3><blockquote>
+<p>需要登陆苹果账号</p>
+<p>主要提供git，以及c/cpp编译工具等</p>
+</blockquote>
+<ol>
+<li>下载安装：</li>
+</ol>
+<ul>
+<li>下载地址：<a target="_blank" rel="noopener" href="https://developer.apple.com/download/more/">https://developer.apple.com/download/more/</a></li>
+<li>命令行安装：<code>xcode-select --install</code>（只安装命令行工具）</li>
+</ul>
+<ol start="2">
+<li>安装完成后，可通过<code>git --version</code>查看是否安装成功</li>
+</ol>
+<h3 id="✨HomeBrew"><a href="#✨HomeBrew" class="headerlink" title="✨HomeBrew"></a>✨HomeBrew</h3><blockquote>
+<p>Mac 系统级别的包管理工具</p>
+</blockquote>
+<ol>
+<li>打开mac自带终端，并执行如下命令<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> /bin/bash -c <span class="string">&quot;<span class="subst">$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)</span>&quot;</span></span></span><br></pre></td></tr></table></figure></li>
+<li>安装完成后，输入如下命令，如安装成功会返回安装地址<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">which</span> brew</span></span><br></pre></td></tr></table></figure></li>
+<li><code>cmd+n</code>打开新的终端，并输入<code>brew -h</code>，可以看到所有的brew指令，如有，证明安装成功</li>
+</ol>
+<h3 id="zsh"><a href="#zsh" class="headerlink" title="zsh"></a>zsh</h3><blockquote>
+<p>zsh和bash一样，是一种unix shell，mac一般默认用的是bash，zsh提供了更强大的补全和配置能力</p>
+<p>这个看个人喜好选择安装</p>
+</blockquote>
+<ol>
+<li>打开终端，输入<code>brew install zsh</code></li>
+<li>切换默认的shell<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sudo sh -c <span class="string">&quot;echo <span class="subst">$(which zsh)</span> &gt;&gt; /etc/shells&quot;</span> &amp;&amp; chsh -s $(<span class="built_in">which</span> zsh)</span></span><br></pre></td></tr></table></figure></li>
+<li>打开新的终端，可以看到已经变成了zsh样式，证明安装并配置成功。</li>
+</ol>
+<h3 id="Oh-My-Zsh"><a href="#Oh-My-Zsh" class="headerlink" title="Oh My Zsh"></a>Oh My Zsh</h3><blockquote>
+<p>开源的zsh配置，可以让我们更方便的使用zsh</p>
+<p>官网：<a target="_blank" rel="noopener" href="https://ohmyz.sh/">https://ohmyz.sh/</a></p>
+</blockquote>
+<ol>
+<li>安装脚本<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sh -c <span class="string">&quot;<span class="subst">$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)</span>&quot;</span></span></span><br></pre></td></tr></table></figure></li>
+</ol>
+<h3 id="Autojump"><a href="#Autojump" class="headerlink" title="Autojump"></a>Autojump</h3><blockquote>
+<p>命令行模糊匹配路径并跳转工具</p>
+<p>github: <a target="_blank" rel="noopener" href="https://github.com/wting/autojump">https://github.com/wting/autojump</a></p>
+</blockquote>
+<ol>
+<li>安装: <code>brew install autojump</code></li>
+<li>使用方法<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> j &lt;pattern&gt; <span class="comment"># 在命令行中访问过的路径</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> j react <span class="comment"># 跳转到命令行历史中包含react且最常访问的路径</span></span></span><br></pre></td></tr></table></figure></li>
+</ol>
+<h3 id="Iterm2"><a href="#Iterm2" class="headerlink" title="Iterm2"></a>Iterm2</h3><blockquote>
+<p>终端工具，可以替换默认的终端，提供了一些便捷功能，如智能提示等。</p>
+</blockquote>
+<ol>
+<li>安装<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> brew install iTerm2</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+<h3 id="✨nvm-node配置"><a href="#✨nvm-node配置" class="headerlink" title="✨nvm + node配置"></a>✨nvm + node配置</h3><h4 id="nvm-安装"><a href="#nvm-安装" class="headerlink" title="nvm 安装"></a>nvm 安装</h4><blockquote>
+<p>用于管理node版本</p>
+</blockquote>
+<ol>
+<li>安装nvm<code>brew install nvm</code></li>
+<li>创建.nvm目录，用来存储各个版本node<code>mkdir ~/.nvm</code></li>
+<li>向~/.zshrc中添加环境变量<code>vim ~/.zshrc</code>，在文件最后加入如下配置<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">export NVM_DIR=&quot;$HOME/.nvm&quot;</span><br><span class="line"> [ -s &quot;/usr/local/opt/nvm/nvm.sh&quot; ] &amp;&amp; . &quot;/usr/local/opt/nvm/nvm.sh&quot;  # This loads nvm</span><br><span class="line"> [ -s &quot;/usr/local/opt/nvm/etc/bash_completion.d/nvm&quot; ] &amp;&amp; . &quot;/usr/local/opt/nvm/etc/bash_completion.d/nvm&quot;  # This loads nvm bash_completion</span><br></pre></td></tr></table></figure></li>
+<li>打开新的终端，输入<code>nvm --version</code>，显示版本号证明安装成功</li>
+</ol>
+<h4 id="node安装"><a href="#node安装" class="headerlink" title="node安装"></a>node安装</h4><ol>
+<li>安装node（这里以14版本为例）<code>nvm install 14</code></li>
+<li>输入<code>nvm ls</code>,显示类似如下<br><img src="/images/other/1.png"></li>
+<li>切换node版本<code>nvm use 14</code></li>
+<li>查看node版本<code>node -v</code></li>
+</ol>
+<h3 id="✨nrm"><a href="#✨nrm" class="headerlink" title="✨nrm"></a>✨nrm</h3><blockquote>
+<p>用于管理npm源</p>
+</blockquote>
+<ol>
+<li>安装<code>npm install -g nrm</code></li>
+<li>添加源(这里以淘宝源示例) <code>nrm add taobao https://registry.npm.taobao.org/</code></li>
+<li>使用源 <code>nrm use taobao</code></li>
+</ol>
+<h3 id="✨yarn"><a href="#✨yarn" class="headerlink" title="✨yarn"></a>✨yarn</h3><ol>
+<li>安装 <code>brew install yarn --ignore-dependencies</code></li>
+<li>查看版本 <code>yarn -v</code></li>
+</ol>
+<h3 id="✨vscode"><a href="#✨vscode" class="headerlink" title="✨vscode"></a>✨vscode</h3><ol>
+<li>安装<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> brew install --cask visual-studio-code</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+<h4 id="vscode-扩展推荐"><a href="#vscode-扩展推荐" class="headerlink" title="vscode 扩展推荐"></a>vscode 扩展推荐</h4><p>Prettier - Code formatter<br>ESLint<br>Code Spell Checker<br>Git CZ Emoji<br>GitLens — Git supercharged<br>Git Graph<br>TypeScript Import Sorter<br>Todo Tree</p>
+<p>Document This<br>Git History<br>Live Server<br>Debugger for Chrome</p>
+<h4 id="vscode-常用配置"><a href="#vscode-常用配置" class="headerlink" title="vscode 常用配置"></a>vscode 常用配置</h4><p> “workbench.editor.enablePreview”: false,</p>
+<h3 id="chrome-devtools"><a href="#chrome-devtools" class="headerlink" title="chrome devtools"></a>chrome devtools</h3><p>Redux DevTools<br>React Developer Tools<br>沙拉查词-聚合词典划词翻译<br>二维码生成器 (Quick QR)<br>Vue.js devtools<br>JSON Formatter<br>OneTab</p>
+<h2 id="git-配置"><a href="#git-配置" class="headerlink" title="git 配置"></a>git 配置</h2><ol>
+<li>打开.gitconfig <code>vim ~/.gitconfig</code></li>
+<li>加入以下内容<blockquote>
+<p>alias部分定义一些常用命令别名，便于快速操作</p>
+<p><code>editor = code --wait</code>可以在当在vscode编辑器中使用<code>git commit --amend</code>等命令时，优先在编辑器上展示信息便于编辑。</p>
+</blockquote>
+</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">[core]</span><br><span class="line">  editor = code --wait</span><br><span class="line">[alias]</span><br><span class="line">                hist = log --graph --abbrev-commit --decorate --date=relative --format=format:&#x27;%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)&#x27; --all</span><br><span class="line">                hist2 = log --graph --abbrev-commit --decorate --date=relative --format=format:&#x27;%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)&#x27; --all</span><br><span class="line">                hist1 = log --graph --abbrev-commit --decorate --format=format:&#x27;%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)&#x27; --all</span><br><span class="line">    co = checkout</span><br><span class="line">    st = status</span><br><span class="line">    br = branch</span><br><span class="line">    ci = commit</span><br><span class="line">    rems = remote -v</span><br><span class="line">    last = log -1 HEAD</span><br><span class="line">    brvv = branch -vv</span><br><span class="line">    files = diff-tree --no-commit-id --name-only -r</span><br><span class="line">    whatadded = log --diff-filter=A</span><br><span class="line">          developers = shortlog -sn</span><br></pre></td></tr></table></figure>
+
+<h3 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h3><p><code>lsof -i:3000</code> 查看某个端口号的进程</p>
+<p><code>kill pid</code> 杀掉进程</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/posts/js_mechanism/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="zhaha">
+      <meta itemprop="description" content="Growing front-end engineer.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zhaha's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/posts/js_mechanism/" class="post-title-link" itemprop="url">JS Engine & JS Runtime</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-11-30 20:52:31 / 修改时间：21:12:56" itemprop="dateCreated datePublished" datetime="2021-11-30T20:52:31+08:00">2021-11-30</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/note/" itemprop="url" rel="index"><span itemprop="name">note</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>JS不同于其他编译型语言，编译后成为机器码可以直接在主机上运行。js运行在一个宿主环境中（一个可以识别并且执行js代码的程序），这个容器一般必须要做两件事情：</p>
+<ul>
+<li>解析js代码，转换成可执行的机器语言</li>
+<li>暴露一些额外的对象（API），可以与js代码做交互</li>
+</ul>
+<p>做第一部分工作的就是<b style="color: #c85">Javascript Engine</b><br>做两一部分功能就是<b style="color: #c85">Javascript Runtime</b></p>
+<h2 id="JS-引擎"><a href="#JS-引擎" class="headerlink" title="JS 引擎"></a>JS 引擎</h2><blockquote>
+<p>常见的js引擎有： </p>
+<ul>
+<li>chrome v8(chrome、node、opera)</li>
+<li>spiderMonkey(FireFox)</li>
+<li>Nitro(safari)</li>
+<li>chakra(Edge)</li>
+</ul>
+</blockquote>
+<h2 id="JS-Runtime"><a href="#JS-Runtime" class="headerlink" title="JS Runtime"></a>JS Runtime</h2><blockquote>
+<p>Javascript Runtime 就是JS宿主环境创建的一个scope， 在这个scope内JS可以访问宿主环境提供的一系列特性</p>
+<p>举个例子：chrome browser和nodejs都使用v8引擎，但是两者的runtime不同，chrome中提供了window、dom等对象，而nodejs提供了require、process等方法。</p>
+</blockquote>
+<h3 id="常见宿主环境及其运行时"><a href="#常见宿主环境及其运行时" class="headerlink" title="常见宿主环境及其运行时"></a>常见宿主环境及其运行时</h3><table>
+<thead>
+<tr>
+<th>宿主环境</th>
+<th>js引擎</th>
+<th>runtime特性</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>chrome浏览器</td>
+<td>v8</td>
+<td>dom、window、timer等</td>
+</tr>
+<tr>
+<td>nodejs</td>
+<td>v8</td>
+<td>require、fs、process等</td>
+</tr>
+</tbody></table>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/29027845/what-is-the-difference-between-javascript-engine-and-javascript-runtime-environm">JS Engine vs JS Runtime</a></p>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903908452597768">https://juejin.cn/post/6844903908452597768</a></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/posts/webgl_study4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="zhaha">
+      <meta itemprop="description" content="Growing front-end engineer.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zhaha's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/posts/webgl_study4/" class="post-title-link" itemprop="url">WebGL_入门学习4 (shader)</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-03-21 19:48:08" itemprop="dateCreated datePublished" datetime="2021-03-21T19:48:08+08:00">2021-03-21</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-11-30 20:48:57" itemprop="dateModified" datetime="2021-11-30T20:48:57+08:00">2021-11-30</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/note/" itemprop="url" rel="index"><span itemprop="name">note</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p><img src="/images/webgl/webgl21.png" alt="webgl"></p>
+<p><strong>图元装配：</strong> 将顶点信息分组为一个个三角形面</p>
+<p><strong>光栅化：</strong> 将矢量顶点组成的图形进行像素化的过程，计算屏幕上每一个像素点的rgb值。</p>
+<p>假定屏幕分辨率为1920×1080，在二维屏幕渲染（光栅化）时，内存中frame buffer只保存着1920×1080个屏幕点的颜色，然后一个一个的画到屏幕上。（它的实现方式是以一个1920×1080长的一维数组储存每个顶点的RGB颜色，然后遍历数组画出来）什么X, Y, Z，什么alpha之类的frame buffer都没有的，在frame buffer里只有3个值：R, G, B。X, Y, Z, alpha等等属性要在另外的地方存储。<strong>光栅化，就是计算出1920×1080这么长的RGB数组中，每一个RGB的值。</strong></p>
+<p><img src="/images/webgl/webgl22.png" alt="webgl"></p>
+<p><img src="/images/webgl/webgl23.png" alt="webgl"></p>
+<h1 id="着色器是啥"><a href="#着色器是啥" class="headerlink" title="着色器是啥"></a>着色器是啥</h1><p>首先我们需要知道：想要让WebGL进行绘图，就必须使用着色器，一个WebGL程序包含运行在浏览器中的javascript和运行在WebGL系统的着色器程序这两个部分。</p>
+<p>webgl中需要两种着色器： <strong>顶点着色器 &amp; 片元着色器</strong>。</p>
+<p><strong>每个着色器本质上就是一个函数，有特定的输入和输出。着色器函数会被串联到同一个着色器程序中</strong>。</p>
+<h1 id="着色器语言–GLSL"><a href="#着色器语言–GLSL" class="headerlink" title="着色器语言–GLSL"></a>着色器语言–GLSL</h1><p>上面提到了着色器的本质就是一个函数程序，那它也就拥有自己的语言，在webGL中，我们用GLSL语言来编写着色器代码（WebGL不支持GLSL中所有的特性，它支持的是一个子集，其中只包括WebGL需要的那部分核心特性）。</p>
+<p>GLSL (GL Shader Language)编程语言的语法和c语言较为类似，是一种强类型语言，本文不过多介绍GLSL语言，只简单的说明一下最基本最常用的内容，便于后面内容理解。</p>
+<p>下面是GLSL的基本类型，除此之外着色器中还可以将它们构成数组或结构体，以实现更复杂的数据类型。</p>
+<table>
+<thead>
+<tr>
+<th>变量类别</th>
+<th>变量类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>空</td>
+<td>void</td>
+<td>用于无返回值的函数或空的参数列表</td>
+</tr>
+<tr>
+<td>标量</td>
+<td>float, int, bool</td>
+<td>浮点型，整型，布尔型的标量数据类型</td>
+</tr>
+<tr>
+<td>浮点型向量</td>
+<td>float, vec2, vec3, vec4</td>
+<td>包含1，2，3，4个元素的浮点型向量</td>
+</tr>
+<tr>
+<td>整数型向量</td>
+<td>int, ivec2, ivec3, ivec4</td>
+<td>包含1，2，3，4个元素的整型向量</td>
+</tr>
+<tr>
+<td>布尔型向量</td>
+<td>bool, bvec2, bvec3, bvec4</td>
+<td>包含1，2，3，4个元素的布尔型向量</td>
+</tr>
+<tr>
+<td>矩阵</td>
+<td>mat2, mat3, mat4</td>
+<td>尺寸为2x2，3x3，4x4的浮点型矩阵</td>
+</tr>
+<tr>
+<td>纹理句柄</td>
+<td>sampler2D, samplerCube</td>
+<td>表示2D，立方体纹理的句柄</td>
+</tr>
+</tbody></table>
+<p>GLSL中有很多内置函数，可以实现三角函数变换，矩阵运算和矢量函数运算，纹理查询等等能力。</p>
+<h2 id="存储限定字"><a href="#存储限定字" class="headerlink" title="存储限定字"></a>存储限定字</h2><p>在GLSL中，我们经常使用attribute  varying  uniform限定字来修饰变量（这三个变量都必须声明为全局比变量）。（我们会通过这三个限定字来为着色器传递数据）</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>顶点着色器</th>
+<th>片元着色器</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>attribute</td>
+<td>✅</td>
+<td></td>
+</tr>
+<tr>
+<td>varying</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>uniform</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+</tbody></table>
+<h3 id="attribute"><a href="#attribute" class="headerlink" title="attribute"></a>attribute</h3><p>attribute只能出现在顶点着色器中，用来表示逐顶点的信息。(比如线段中有（4.0， 3.0， 6.0）和（8.0， 3.0， 0.0）两个顶点，这两个点的坐标会传递个attribute，但是线段上的其他点比如（6.0，3.0，3.0），虽然也会被画出来，但因为不是顶点，所以不会传递给attribute，也不会被顶点着色器处理。)</p>
+<p>Attribute 变量类型只能是float,  vec2, vec3, vec4, mat2, mat3, mat4。可从缓存中读取</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 限定字 + 类型 + 变量名</span><br><span class="line">attribute vec4 a_Position;</span><br></pre></td></tr></table></figure>
+
+<h3 id="uniform"><a href="#uniform" class="headerlink" title="uniform"></a>uniform</h3><p>uniform是只读的，可以是除了数组或结构体之外的任意类型，如果顶点着色器和片元着色器中声明了同名的uniform变量，那么它就会被两种着色器共享。</p>
+<p>uniform变量包含了“一致”的数据（<strong>非逐顶点/逐片元</strong>），我们在javascript中会向它传递这种类型的数据，比如变换矩阵就不是逐顶点的，而是所有顶点共用的。</p>
+<h3 id="varying"><a href="#varying" class="headerlink" title="varying"></a>varying</h3><p>从顶点着色器向片元着色器中传递的数据，是一个<strong>插值数据</strong>。要在两种着色器中声明同名，同类型的varying变量，varying可以被顶点着色器修改，在片段着色器中只读。</p>
+<p>顶点着色器中赋值给varying变量的指不会直接传递给片元着色器，这其中还发生了光栅化的过程：根据绘制的图形，对顶点着色器中的varying变量进行内插。然后在传递给后者。</p>
+<p>只能是float,  vec2, vec3, vec4, mat2, mat3, mat4类型。</p>
+<p><img src="/images/webgl/webgl24.png" alt="webgl"></p>
+<p><img src="/images/webgl/webgl25.png" alt="webgl"></p>
+<p>由上可见，两种着色器中的varying并不是一回事，所有这也是我们把这种变量叫varying的原因。</p>
+<h1 id="着色器"><a href="#着色器" class="headerlink" title="着色器"></a>着色器</h1><h2 id="顶点着色器–vertex-shader"><a href="#顶点着色器–vertex-shader" class="headerlink" title="顶点着色器–vertex shader"></a>顶点着色器–vertex shader</h2><p>顶点着色器的功能是把原始顶点数据变换到裁减空间坐标。每个顶点都会调用该着色器函数。</p>
+<p>顶点着色器的输入数据有如下2种方式：</p>
+<ol>
+<li>Attributes</li>
+<li>Uniforms  (单次绘制中对所有顶点保持不变的值)</li>
+</ol>
+<h3 id="内置变量"><a href="#内置变量" class="headerlink" title="内置变量"></a>内置变量</h3><ul>
+<li><code>vec4 gl_Position</code> 表示顶点位置</li>
+<li><code>float gl_PointSize</code> 表示点的尺寸（像素大小）<br><code>gl_Position</code>变量必须被赋值，否则着色器就没办法正常工作，<code>gl_PointSize</code>不赋值的话默认值为1</li>
+</ul>
+<h2 id="片元着色器–fragment-shader"><a href="#片元着色器–fragment-shader" class="headerlink" title="片元着色器–fragment shader"></a>片元着色器–fragment shader</h2><p>顶点着色器的输出数据经过光栅化处理后，输入给片元着色器，而片元着色器的功能就是为正在光栅化的当前像素提供颜色。</p>
+<p>片元着色器控制着像素点的颜色。</p>
+<p>每个像素都会调用片段着色器。片段着色器的输入数据有如下2种方式：</p>
+<ol>
+<li>Uniforms (对于单个绘图调用的每个像素保持相同的值)</li>
+<li>Varyings (从顶点着色器传递并插值的数据)<br>###内置变量</li>
+</ol>
+<ul>
+<li><code>vec4 gl_FragColor</code> 指定片元（像素）颜色（RGBA）</li>
+</ul>
+<h2 id="webGL中如何使用着色器：着色器程序"><a href="#webGL中如何使用着色器：着色器程序" class="headerlink" title="webGL中如何使用着色器：着色器程序"></a>webGL中如何使用着色器：着色器程序</h2><p>webGL中有两种对象来管理着色器：</p>
+<p><strong>着色器对象：</strong> 着色器对象管理一个顶点着色器或一个片元着色器。每一个着色器都有一个着色器对象。</p>
+<p><strong>程序对象：</strong> 程序对象是管理着色器对象的容器，在WebGL中，一个程序对象必须包含一个顶点着色器和一个片元着色器</p>
+<p><img src="/images/webgl/webgl26.png" alt="webgl"></p>
+<ol>
+<li>创建着色器对象（<code>gl.createShader(type)</code>）</li>
+<li>向着色器对象中填充着色器程序的源代码（<code>gl.shaderSource(shader, code)</code>）</li>
+<li>编译着色器（<code>gl.compileShader(shader)</code>）</li>
+<li>创建程序对象（<code>gl.createProgram()</code>）</li>
+<li>为程序对象分配着色器（<code>gl.attachShader(program, shader)</code>）</li>
+<li>连接程序对象（<code>gl.linkProgram(program)</code>）</li>
+</ol>
+<p>把着色器连接起来：</p>
+<ul>
+<li>保证顶点着色器和片元着色器的varying变量同名同类型且一一对应</li>
+<li>顶点着色器对每个varying变量赋值了</li>
+<li>顶点着色器和片元着色器中的同名uniform变量也是同类型的</li>
+<li>着色器中的attribute、uniform、varying变量的个数没有超过着色器上限</li>
+</ul>
+<ol start="7">
+<li>使用程序对象（<code>gl.useProgram(program)</code>）告诉WebGL系统绘制时使用哪一个程序对象</li>
+</ol>
+<h2 id="纹理映射"><a href="#纹理映射" class="headerlink" title="纹理映射"></a>纹理映射</h2><p>纹理映射就是根据纹理图像，为之前光栅化的每个片元涂上合适的颜色，组成的纹理图片的像素被成为<strong>纹素</strong>。</p>
+<ol>
+<li>准备好映射到几何图形上的纹理图像</li>
+<li>为几何图形配置纹理映射方式</li>
+</ol>
+<p>我们使用纹理坐标来确定纹理图像的哪部分覆盖到几何图形上 </p>
+<p><img src="/images/webgl/webgl27.png" alt="webgl"></p>
+<ol start="3">
+<li>加载纹理图像，对其进行一些配置，以在WebGL中使用<br><code>gl.texParameteri(target, pname, param)</code></li>
+</ol>
+<table>
+    <tr>
+        <td>参数</td>
+        <td>描述</td>
+        <td>默认值</td>
+        <td>值</td>
+    </tr>
+    <tr>
+        <td>gl.TEXTURE_MAG_FILTER</td>
+        <td>纹理放大</td>
+        <td>gl.LINEAR</td>
+       <td rowspan="2">gl.LINEAR <br/>
+gl.NEAREST</td>
+    </tr>
+    <tr>
+        <td>gl.TEXTURE_MIN_FILTER</td>
+        <td>纹理缩小</td>
+        <td>gl.NEAREST_MIPMAP_LINEAR</td>
+    </tr>
+    <tr>
+        <td>gl.TEXTURE_WRAP_S</td>
+        <td>纹理水平填充</td>
+        <td>gl.REPEAT</td>
+        <td rowspan="2">gl.REPEAT <br/>
+gl.MIRRORED_REPEAT <br/>
+gl.CLAMP_TO_EDGE</td>
+    </tr>
+    <tr>
+        <td>gl.TEXTURE_WRAP_T</td>
+        <td>纹理垂直填充</td>
+        <td>gl.REPEAT</td>
+    </tr>
+</table>
+
+<ol start="4">
+<li>在片元着色器中将相应的纹素从纹理中抽取出来，并将纹素的颜色赋值给片元。<ol>
+<li>一般纹理坐标通过attribute传入顶点着色器；</li>
+<li>顶点着色器中接受顶点纹理坐标，光栅化后传递给片元着色器；</li>
+<li>片元着色器根据片元的纹理坐标从纹理图像中抽取纹素颜色，赋值给当前片元gl.CLAMP_TO_EDGE  </li>
+</ol>
+</li>
+</ol>
+<p>webgl通过一种<strong>纹理单元</strong>的机制来同时使用多个纹理，每个纹理单元有一个单元编号来管理纹理图像，即使程序只需要使用一张纹理图像也要指定纹理单元。系统支持的纹理单元个数取决于硬件和浏览器的webGL实现。</p>
+<p><img src="/images/webgl/webgl28.png" alt="webgl"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">// 加载配置纹理， image为纹理图片</span><br><span class="line">function loadTexture(image: HTMLImageElement, gl: WebGLRenderingContext, program: WebGLProgram)&#123;</span><br><span class="line">  // 创建纹理对象</span><br><span class="line">  const texture = gl.createTexture();</span><br><span class="line">  // 对纹理图像进行y轴反转  让纹理和图片坐标系统能对应上</span><br><span class="line">  gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, 1);</span><br><span class="line">  // 激活一个纹理单元 </span><br><span class="line">  gl.activeTexture(gl.TEXTURE0);</span><br><span class="line">  // 绑定纹理对象，指定纹理类型。如果已经激活了某个纹理单元，纹理对象也会绑定到单元上</span><br><span class="line">  gl.bindTexture(gl.TEXTURE_2D, texture);</span><br><span class="line">  // 将纹理图像分配给纹理对象</span><br><span class="line">  gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, image);</span><br><span class="line">  // 创建mipmap</span><br><span class="line">  // gl.generateMipmap(gl.TEXTURE_2D);</span><br><span class="line">  // 配置纹理对象的参数</span><br><span class="line">  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);</span><br><span class="line">  // 将纹理单元传递给片元着色器</span><br><span class="line">  const u_Sampler = gl.getUniformLocation(program, &#x27;u_Sampler&#x27;);</span><br><span class="line">  gl.uniform1i(u_Sampler, 0);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>只有 gl.CLAMP_TO_EDGE 支持非2的整次幂的纹理。非2幂次方的图片不能用<code>REPEAT</code>和<code>MIPMAP</code></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/posts/webgl_study3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="zhaha">
+      <meta itemprop="description" content="Growing front-end engineer.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zhaha's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/posts/webgl_study3/" class="post-title-link" itemprop="url">WebGL_入门学习3</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-01-18 19:48:08" itemprop="dateCreated datePublished" datetime="2021-01-18T19:48:08+08:00">2021-01-18</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-11-30 20:48:57" itemprop="dateModified" datetime="2021-11-30T20:48:57+08:00">2021-11-30</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/note/" itemprop="url" rel="index"><span itemprop="name">note</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="模板缓冲"><a href="#模板缓冲" class="headerlink" title="模板缓冲"></a>模板缓冲</h1><p><a target="_blank" rel="noopener" href="http://www.jiazhengblog.com/blog/2016/04/05/2941/">一张图明白什么是模板缓冲</a>：</p>
+<p><img src="/images/webgl/webgl18.png" alt="webgl"></p>
+<p>WebGL中的stencil buffer（模板缓冲区）的作用也是类似的，可以在Buffer中指定一个形状作为模板，接着通过stencil test（模板测试）过程让位于形状内部的物体显示，而外部不显示，类似遮罩的效果。当然也可以反过来，让形状内部不显示物体，而外部显示。Stencil buffer为每个fragment提供8位的存储空间，即可以存储256个不同的数值，但是如果要实现一个简单的模板剪裁效果，其实1位（0和1）就够用了。Stencil buffer的作用如下图所示：</p>
+<p><img src="/images/webgl/webgl19.png" alt="webgl"></p>
+<h1 id="Batch"><a href="#Batch" class="headerlink" title="Batch"></a>Batch</h1><p><img src="/images/webgl/webgl20.png" alt="webgl"></p>
+<p>每调用1次渲染api并不是直接经过以上的所有组件通知gpu执行我们的调用。</p>
+<p>runtime会将api调用转换为设备无关的”命令”(这样才能保证在任何设备硬件上兼容，其实也就是做到对不同的硬件架构做到透明)，然后将命令缓存到commandbuffer中去。</p>
+<p>而命令从runtime到driver这个过程中，cpu会发生从用户模式到内核模式的转换。这个操作是一件非常耗时的工作。所以说如果每次api调用都直接发送命令到driver，那将是非常巨大的性能消耗。</p>
+<p>所以在不是必须要马上提交给GPU绘制的命令，我们可以先缓存在commandbuffer中，等到需要时一次性提交，优化效率。当然这里边还涉及到渲染状态(texture，shader，material各种参数)的影响，如果渲染状态改变了，那么要使用之前渲染状态进行渲染的所有drawcall命令必须全部被执行了。也就是说之前缓冲在commandbuffer中的所有drawcall命令必须刷新。这其实会发生一次从用户模式到内核模式的切换。</p>
+<p>主要时间消耗</p>
+<ol>
+<li>runtime需要将api转换成设备无关的”命令”的时间消耗。</li>
+<li>状态切换导致的从用户模式到内核模式的模式切换的时间消耗</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/posts/web_audio1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="zhaha">
+      <meta itemprop="description" content="Growing front-end engineer.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zhaha's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/posts/web_audio1/" class="post-title-link" itemprop="url">Web audio 学习笔记（入门）</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-01-12 13:18:24" itemprop="dateCreated datePublished" datetime="2021-01-12T13:18:24+08:00">2021-01-12</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-11-30 20:51:53" itemprop="dateModified" datetime="2021-11-30T20:51:53+08:00">2021-11-30</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/note/" itemprop="url" rel="index"><span itemprop="name">note</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>前端音频播放一般有两种方式： dom &amp; web audio</p>
+<p>Dom 的方式比较简单，直接利用 dom 标签和 dom api 控制音频的播放 </p>
+<p>Web Audio API并不是替代<code>audio</code> 标签的东西，换句话说Web Audio API其实是对<code>audio</code> 标签功能上的补充。二者的关系可以类比<code>img</code>标签与<code>canvas</code> 标签。具体改选用哪个取决于你的目的是什么。如果只是为了简单地控制音频的播放的话，<code>audio</code>标签更适合吧。但是如果有更复杂的音频处理需求的话，就必须使用Web Audio API。</p>
+<blockquote>
+<p>注：</p>
+<ol>
+<li>使用前要对web audio的兼容性进行判断，下文中有示例</li>
+<li>如果要实现自动播放，要注意一些端（eg: chrome浏览器）会限制自动播放，必须有用户交互后才可以播放音频，需要在用户交互的回调里去播放声音。</li>
+</ol>
+</blockquote>
+<h2 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h2><p><img src="/images/webAudio/WechatIMG12238.jpeg" alt="webAudio"></p>
+<p>一个 web audio 本质上是由一系列的 <strong>AudioNode</strong> 组成，<strong>多个节点构成类似链表一样的结构</strong>，有入口和出口。从一个或者多个音源出发，经过一个或者多个处理节点，最终输出到输出节点（输出终端，一般是扬声器）。（如果有需求的话，也可以不指定输出节点。例如，想把音频数据用图表的形式展现的场合等。）web audio的一个简单的典型的流程类是下面这样子：</p>
+<ol>
+<li>创建AudioContext对象</li>
+<li>在AudioContext对象内设置音源，例如<code>audio</code>标签，震动发声器，音频流</li>
+<li>创建effect node（效果节点）。例如reverb, biquad filter, panner, compressor（这些都是音频特效）</li>
+<li>选择音频的最终输出节点。例如，你的电脑的扬声器</li>
+<li>音频经过效果节点处理后，然后输出到下一个节点，这些节点连接起来</li>
+</ol>
+<p><img src="/images/webAudio/WechatIMG12239.png" alt="webAudio"></p>
+<h3 id="AudioNode"><a href="#AudioNode" class="headerlink" title="AudioNode"></a>AudioNode</h3><p>这是一种由 AudioContext 生成的基本对象，用于生成或者处理音频波形数据。</p>
+<p>AudioContext 提供很多特定的 AudioNode 可供使用，例如均衡器、滤波器、振荡器……</p>
+<p>AudioNode 大体可分3类。</p>
+<ul>
+<li><p>第一种：作为<strong>声音源头</strong>的AudioNode，用于存储或生成声音（SourceNode，下文的可以被播放的声源中会介绍）：<br><img src="/images/webAudio/WechatIMG12240.png" alt="webAudio"></p>
+</li>
+<li><p>第二种：作为<strong>过滤器</strong>的AudioNode，会对输入（In）的声音进行处理之后再输出（Out）。<br>（有些 AudioNode 可以有多个输入（In），然后对它们做混音后再输出。）<br><img src="/images/webAudio/WechatIMG12241.png" alt="webAudio"></p>
+</li>
+<li><p>第三种：<strong>destination</strong>是特殊的AudioNode，它收到声音之后会直接传到耳机或扬声器，让我们最终听到声音。<br><img src="/images/webAudio/WechatIMG12242.png" alt="webAudio"></p>
+</li>
+</ul>
+<h3 id="常用的几种AudioNode"><a href="#常用的几种AudioNode" class="headerlink" title="常用的几种AudioNode"></a>常用的几种AudioNode</h3><h4 id="音源节点（下文介绍）"><a href="#音源节点（下文介绍）" class="headerlink" title="音源节点（下文介绍）"></a>音源节点（下文介绍）</h4><h4 id="AudioDestinationNode：-输出目的地节点"><a href="#AudioDestinationNode：-输出目的地节点" class="headerlink" title="AudioDestinationNode： 输出目的地节点"></a>AudioDestinationNode： 输出目的地节点</h4><p><code>audioContext.destination</code></p>
+<p>定义了最后音频要输出到哪里，通常是输出到你的扬声器。</p>
+<h4 id="GainNode：音量调节器"><a href="#GainNode：音量调节器" class="headerlink" title="GainNode：音量调节器"></a>GainNode：音量调节器</h4><p>这个节点就是用来调节音量大小的。这是我们非常常用的一个AudioNode，下面的介绍也很多用这个节点举例。<br>创建方法：<code>audioContext.createGain()</code></p>
+<p>当我们想调节音量的时候，需要把这个节点连接到节点上:<code>sourceNode.connect(gainNode)</code></p>
+<p>当我们想静音时，只需要把GainNode和前面的节点切断就行:<code>sourceNode.disConnect(gainNode)</code></p>
+<p>调节音量值: <code>GainNode.gain</code> 这是一个AudioParam对象（下文介绍）</p>
+<h4 id="DynamicsCompressorNode：动态压缩器"><a href="#DynamicsCompressorNode：动态压缩器" class="headerlink" title="DynamicsCompressorNode：动态压缩器"></a>DynamicsCompressorNode：动态压缩器</h4><p>用于把多个音源实时混音，并防止爆音</p>
+<ol>
+<li><code>const compressorNode = audioContext.createDynamicsCompressor();</code></li>
+<li><code>sourceNode1.connect(compressorNode);</code></li>
+<li><code>sourceNode2.connect(compressorNode);</code></li>
+<li><code>sourceNode3.connect(compressorNode);</code></li>
+<li><code>compressorNode.connect(audioContext.destination);</code><br>虽然可以把多个 Node 直接 connect 到 audioContext.destination，但是不建议这么做，因为这样可能会出现爆音现象。若有同时播放多个声音的需求（例如一个游戏的各种音效），记得通过 DynamicsCompressorNode 混合多个声音。</li>
+</ol>
+<h4 id="BiquadFilterNode：简单低频滤波器"><a href="#BiquadFilterNode：简单低频滤波器" class="headerlink" title="BiquadFilterNode：简单低频滤波器"></a>BiquadFilterNode：简单低频滤波器</h4><p>首先，使用<code>context.createBiquadFilter</code>方法建立过滤器实例。</p>
+<p><code>const filter = audioContext.createBiquadFilter()</code></p>
+<p>然后，通过filter.type属性指定过滤器的类型。</p>
+<p><code>filter.type = &#39;lowpass&#39;;</code></p>
+<p>目前，滤波器有以下这些类型。<br>• lowpass：标准二阶谐振低通滤波器，具有12dB /倍频程衰减。截止频率以下的频率通过；高于它的频率被衰减。<br>• highpass：标准二阶谐振高通滤波器，具有12dB /倍频程衰减。截止频率以下的频率被衰减；高于它的频率通过。<br>• bandpass： 标准的二阶带通滤波器。给定频率范围之外的频率会衰减；它内部的频率通过。<br>• lowshelf： 标准二阶低架滤波器管理器。低于频率的频率会增强或衰减；频率不变。<br>• highshelf： 标准的二阶高架过滤器。高于频率的频率会增强或衰减；低于它的频率不变。<br>• peaking： 范围内的频率会增加或衰减。外面的频率不变。<br>• notch： 标准陷波滤波器，也称为带阻或带阻滤波器。与带通滤波器相反：超出给定频率范围的频率通过；内部的频率被衰减。<br>• allpass： 标准二阶全通滤波器。它允许所有频率通过，但会更改各个频率之间的相位关系。</p>
+<p>然后指定过滤器的频率（frequency）属性（也是一个AudioParam）。</p>
+<p><code>filter.frequency.value = frequency</code></p>
+<p>最后，过滤器实例连接节点实例，就可以生效了。</p>
+<p><code>sourceNode.connect(filter);</code></p>
+<h4 id="其他："><a href="#其他：" class="headerlink" title="其他："></a>其他：</h4><p>还有很多用于处理音效，数据分析和可视化，分离、合并声道，处理声音空间效果（3d会用）的节点，这里不赘述，可以参考<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Web_Audio_API">web_audio_api</a></p>
+<h3 id="AudioParam"><a href="#AudioParam" class="headerlink" title="AudioParam"></a>AudioParam</h3><p>大多数AudioNode的参数类型都是AudioParam。</p>
+<h4 id="赋值方式"><a href="#赋值方式" class="headerlink" title="赋值方式"></a>赋值方式</h4><ol>
+<li><p>直接赋值：通过AudioParam.value</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 这里用GainNode举例</span></span><br><span class="line">gainNode.gain.value = <span class="number">0.4</span>; <span class="comment">// 设置这个节点的音量大小为0.4</span></span><br></pre></td></tr></table></figure></li>
+<li><p>通过赋值函数赋值<br>AudioParam提供了很多赋值函数，可以实现各种渐变效果的赋值。（例如声音渐渐变大）</p>
+</li>
+</ol>
+<ul>
+<li><code>AudioParam.setValueAtTime(value, startTime)</code></li>
+</ul>
+<p>在一个确切的时间点，更改值，新的值会传递给value。</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 马上把声音大小变为1</span></span><br><span class="line">gainNode.gain.setValueAtTime(<span class="number">1</span>, audioContext.currentTime + <span class="number">0</span>);</span><br></pre></td></tr></table></figure>
+<p><img src="/images/webAudio/WechatIMG12243.png" alt="webAudio"></p>
+<ul>
+<li><code>AudioParam.linearRampToValueAtTime(value, endTime)</code></li>
+</ul>
+<p>逐渐按线性变化。这个改变会从上一个事件指定的事件开始，跟随一个线性“斜坡”到参数给的新值，并在 endTime 参数给定的时间到达新值。</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 线性把声音大小变为1 （时长1s）</span></span><br><span class="line">gainNode.gain.linearRampToValueAtTime(<span class="number">1</span>, audioContext.currentTime + <span class="number">1</span>);</span><br></pre></td></tr></table></figure>
+<p><img src="/images/webAudio/WechatIMG12245.png" alt="webAudio"></p>
+<ul>
+<li><code>AudioParam.exponentialRampToValueAtTime(value, endTime)</code></li>
+</ul>
+<p>逐渐按指数变化。这个改变会从上一个事件指定的值开始，跟随一个指数“斜坡”变化到参数给的新值，并在 endTime 参数给定的时间到达新值。</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 指数型把声音大小变为1 （时长2s）</span></span><br><span class="line">gainNode.gain.exponentialRampToValueAtTime(<span class="number">1</span>, audioContext.currentTime + <span class="number">2</span>);</span><br></pre></td></tr></table></figure>
+<p><img src="/images/webAudio/WechatIMG12246.png" alt="webAudio"></p>
+<ul>
+<li><code>AudioParam.setTargetAtTime(target, startTime, timeConstant)</code></li>
+</ul>
+<p>开始计划改变值。这个改变将从 startTime 指定的时间开始，并且以指定的方式向目标参数给定的值改变。指数衰减速率由 timeConstant 参数定义，timeConstant 参数使以秒作为测量单位的时间。</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 在一秒后把声音大小按指数变为1，衰减率为0.01</span></span><br><span class="line">gainNode.gain.setTargetAtTime(<span class="number">1</span>, audioContext.currentTime + <span class="number">1</span>, <span class="number">0.01</span>);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p><code>AudioParam.setValueCurveAtTime(values, startTime, duration)</code><br>在一段时间之内按照数组内的值一个个地平滑变化,，从 startTime开始并持续duration。 </p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 在10秒内，声音大小由0.0-&gt;0.2-&gt;0.5-&gt;0.1</span></span><br><span class="line">gainNode.gain.setValueCurveAtTime([<span class="number">0.0</span>,<span class="number">0.2</span>,<span class="number">0.5</span>,<span class="number">0.1</span>], ctx.currentTime + <span class="number">0</span>, <span class="number">10</span>);</span><br></pre></td></tr></table></figure></li>
+<li><p><code>AudioParam.cancelScheduledValues(startTime)</code></p>
+</li>
+</ul>
+<p>取消全部在 AudioParam未来计划发生的改变。</p>
+<h2 id="可以被播放的音源"><a href="#可以被播放的音源" class="headerlink" title="可以被播放的音源"></a>可以被播放的音源</h2><p>创建的音源也是继承自AudioNode，也是AudioNode的一种。下面的几个生成 都是音源节点。</p>
+<ul>
+<li><p>使用震动发声器与JavaScript创建音源的情况：使用<a target="_blank" rel="noopener" href="https://developer.mozilla.org/ja/docs/Web/API/BaseAudioContext/createOscillator">AudioContext.createOscillator</a>这个方法创建<a target="_blank" rel="noopener" href="https://developer.mozilla.org/ja/docs/Web/API/OscillatorNode">OscillatorNode</a>。之后就可以利用震动发声器做音源了。（生成OscillatorNode）</p>
+</li>
+<li><p>使用原始的PCM数据的情况：如果是可以识别的特定的格式的话（mp3之类的），使用AudioContext的特定的decode方法，来获得PCM数据。详细情况可以看这些，<a target="_blank" rel="noopener" href="https://developer.mozilla.org/ja/docs/Web/API/BaseAudioContext/createBuffer">AudioContext.createBuffer()</a>、<a target="_blank" rel="noopener" href="https://developer.mozilla.org/ja/docs/Web/API/BaseAudioContext/createBufferSource">AudioContext.createBufferSource()</a>、<a target="_blank" rel="noopener" href="https://developer.mozilla.org/ja/docs/Web/API/BaseAudioContext/decodeAudioData">AudioContext.decodeAudioData()</a> 。（生成SourceNode）</p>
+</li>
+<li><p>使用<code>video</code>标签或者<code>audio</code>标签等HTML元素的情况：<a target="_blank" rel="noopener" href="https://developer.mozilla.org/ja/docs/Web/API/AudioContext/createMediaElementSource">AudioContext.createMediaElementSource()</a> （生成MediaElementAudioSourceNode）</p>
+</li>
+<li><p>从<a target="_blank" rel="noopener" href="https://developer.mozilla.org/ja/docs/Web/API/MediaStream">WebRTC MediaStream</a>（WebRTC媒体流）输入音频源的情况：可以使用麦克风或者Web摄像头。具体情况看这个，<a target="_blank" rel="noopener" href="https://developer.mozilla.org/ja/docs/Web/API/AudioContext/createMediaStreamSource">AudioContext.createMediaStreamSource()</a>（生成MediaStreamAudioSourceNode）</p>
+</li>
+</ul>
+<p>注：一般来说，作为<strong>声音源头</strong>（SourceNode）的 AudioNode ，它的声音播放完毕后(ended结束事件)，它自身会立即销毁。若需要再次播放，必须重新创建它。</p>
+<h2 id="连接输入输出"><a href="#连接输入输出" class="headerlink" title="连接输入输出"></a>连接输入输出</h2><p>要想音源（输入）通过扬声器（输出）播放出来，就必须要把两者连接起来。我们通过 <code>.connect()</code> 连接两个节点，被连接的节点作为参数。</p>
+<p>（这里以souce =&gt; gain =&gt; destination连接为例）</p>
+<p>• 先创建一个震动发生器声源</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> oscillatorNode = audioCtx.createOscillator();</span><br></pre></td></tr></table></figure>
+<p>• 连接一个音量控制器节点</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建音量控制器</span></span><br><span class="line"><span class="keyword">const</span> gainNode = audioCtx.createGain();</span><br><span class="line"><span class="comment">// souce =&gt; gainNode</span></span><br><span class="line">oscillatorNode.connect(gainNode);</span><br></pre></td></tr></table></figure>
+<p>• 连接到输出节点</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// souce =&gt; destination</span></span><br><span class="line">gainNode.connect(audioCtx.destination);</span><br></pre></td></tr></table></figure>
+<h2 id="一个最简单的播放web-audio-流程（PCM源）"><a href="#一个最简单的播放web-audio-流程（PCM源）" class="headerlink" title="一个最简单的播放web audio 流程（PCM源）"></a>一个最简单的播放web audio 流程（PCM源）</h2><p>特定格式文件（如mp3）加载后生成arraybuffer，使用AudioContext的特定的decode方法，来获得PCM数据作为音源。并连接到输出节点。</p>
+<h3 id="获取原生audioContext"><a href="#获取原生audioContext" class="headerlink" title="获取原生audioContext"></a>获取原生audioContext</h3><p><code>const audioContext = new AudioContext();</code></p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 用更安全的方式判断web audio的兼容性</span></span><br><span class="line"><span class="keyword">const</span> webAudioEnabled = !!(<span class="built_in">window</span>[<span class="string">&#x27;AudioContext&#x27;</span>] || <span class="built_in">window</span>[<span class="string">&#x27;webkitAudioContext&#x27;</span>] || <span class="built_in">window</span>[<span class="string">&#x27;mozAudioContext&#x27;</span>]);</span><br><span class="line"><span class="keyword">const</span> ctx: AudioContext = WebAudio.webAudioEnabled</span><br><span class="line">    ? <span class="keyword">new</span> (<span class="built_in">window</span>[<span class="string">&#x27;AudioContext&#x27;</span>] || <span class="built_in">window</span>[<span class="string">&#x27;webkitAudioContext&#x27;</span>] || <span class="built_in">window</span>[<span class="string">&#x27;mozAudioContext&#x27;</span>])()</span><br><span class="line">    : <span class="literal">undefined</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="加载web-audio"><a href="#加载web-audio" class="headerlink" title="加载web audio"></a>加载web audio</h3><p>responseType 要为 arrayBuffer 类型</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> request = <span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line">    request.open(<span class="string">&#x27;GET&#x27;</span>, url, <span class="literal">true</span>);</span><br><span class="line">    request.responseType = <span class="string">&#x27;arraybuffer&#x27;</span>;</span><br><span class="line">    request.onload = <span class="function">(<span class="params">arrayBuffer</span>) =&gt;</span> &#123;</span><br><span class="line">       <span class="comment">//... </span></span><br><span class="line">    &#125;;</span><br><span class="line">    request.onerror = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">       <span class="comment">//...</span></span><br><span class="line">    &#125;;</span><br><span class="line">    request.send();</span><br></pre></td></tr></table></figure>
+
+<h3 id="decode解码"><a href="#decode解码" class="headerlink" title="decode解码"></a>decode解码</h3><p>将arrayBuffer 转换为 audioBuffer</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">audioContext.decodeAudioData(</span><br><span class="line">  arrayBuffer,</span><br><span class="line">  <span class="function">(<span class="params">audioBuffer: AudioBuffer</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// 解码成功回调 </span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// 解码失败回调</span></span><br><span class="line">  &#125;</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>一个AudioBuffer数据<br><img src="/images/webAudio/WechatIMG12247.png" alt="webAudio"></p>
+<h3 id="声音播放"><a href="#声音播放" class="headerlink" title="声音播放"></a>声音播放</h3><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 生成一个声源节点</span></span><br><span class="line"><span class="keyword">const</span> node = audioContext.createBufferSource();</span><br><span class="line"><span class="comment">// 将声音数组的内存对象，放入这个节点</span></span><br><span class="line">node.buffer = audioBuffer;</span><br><span class="line"><span class="comment">// 将声音上下文与节点连接</span></span><br><span class="line">node.connect(audioContext.destination);</span><br><span class="line"><span class="comment">// 开始播放声音</span></span><br><span class="line">node.start(audioContext.currentTime);</span><br></pre></td></tr></table></figure>
+
+<h3 id="creatBuffer-的使用"><a href="#creatBuffer-的使用" class="headerlink" title="creatBuffer()的使用"></a>creatBuffer()的使用</h3><p>我们也可以不通过特定格式文件获取AudioBuffer，也可以通过自己创建AudioBuffer对象</p>
+<p><code>context.createBuffer()</code>方法生成一个内存的操作视图（空的AudioBuffer对象），用于存放数据。</p>
+<p><code>const buffer = audioContext.createBuffer(channels, signalLength, sampleRate);</code></p>
+<p><code>createBuffer</code>方法接受三个参数。<br>• channels：整数，表示声道。创建单声道的声音，该值为 1。<br>• signalLength：整数，表示声音数组的长度。<br>• sampleRate：浮点数，表示取样率，即一秒取样多少次。</p>
+<p><code>signalLength和sampleRate</code>这两个参数决定了声音的长度。比如，如果取样率是1/3000（每秒取样3000次），声音数组长度是6000，那么播放的声音是2秒长度。</p>
+<ol>
+<li>接着，使用buffer.getChannelData方法取出一个声道。</li>
+</ol>
+<p><code>const data = buffer.getChannelData(0)</code></p>
+<p>上面代码中，buffer.getChannelData的参数0表示取出第一个声道。</p>
+<ol start="2">
+<li><p>下一步，将声音数组放入这个声道。</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> data = buffer.getChannelData(<span class="number">0</span>)</span><br><span class="line"><span class="comment">// singal 是一个声音数组</span></span><br><span class="line"><span class="comment">// singalLengal 是该数组的长度</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; signalLength; i += <span class="number">1</span>) &#123;</span><br><span class="line">   data[i] = signal[i]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>最后，使用context.createBufferSource方法生成一个声音节点并播放声音。</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 生成一个声音节点</span></span><br><span class="line"><span class="keyword">const</span> node = audioContext.createBufferSource();</span><br><span class="line"><span class="comment">// 将声音数组的内存对象，放入这个节点</span></span><br><span class="line">node.buffer = buffer;</span><br><span class="line"><span class="comment">// 将声音上下文与节点连接</span></span><br><span class="line">node.connect(audioContext.destination);</span><br><span class="line"><span class="comment">// 开始播放声音</span></span><br><span class="line">node.start(audioContext.currentTime);</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="模拟标签的播放方式"><a href="#模拟标签的播放方式" class="headerlink" title="模拟标签的播放方式"></a>模拟<audio>标签的播放方式</h2><h3 id="获取原生audioContext-1"><a href="#获取原生audioContext-1" class="headerlink" title="获取原生audioContext"></a>获取原生audioContext</h3><p><code>const audioContext = new AudioContext();</code></p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 用更安全的方式判断web audio的兼容性</span></span><br><span class="line"><span class="keyword">const</span> webAudioEnabled = !!(<span class="built_in">window</span>[<span class="string">&#x27;AudioContext&#x27;</span>] || <span class="built_in">window</span>[<span class="string">&#x27;webkitAudioContext&#x27;</span>] || <span class="built_in">window</span>[<span class="string">&#x27;mozAudioContext&#x27;</span>]);</span><br><span class="line"><span class="keyword">const</span> ctx: AudioContext = WebAudio.webAudioEnabled</span><br><span class="line">    ? <span class="keyword">new</span> (<span class="built_in">window</span>[<span class="string">&#x27;AudioContext&#x27;</span>] || <span class="built_in">window</span>[<span class="string">&#x27;webkitAudioContext&#x27;</span>] || <span class="built_in">window</span>[<span class="string">&#x27;mozAudioContext&#x27;</span>])()</span><br><span class="line">    : <span class="literal">undefined</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="新建Audio对象"><a href="#新建Audio对象" class="headerlink" title="新建Audio对象"></a>新建Audio对象</h3><p><code>const audio = new Audio();</code></p>
+<h3 id="设置跨域"><a href="#设置跨域" class="headerlink" title="设置跨域"></a>设置跨域</h3><p><code>audio.crossOrigin = &#39;anonymous&#39;;</code></p>
+<p>如果是线上资源的话，要求资源是允许跨域的，不然还是播放失败.</p>
+<p><img src="/images/webAudio/WechatIMG12248.png" alt="webAudio"></p>
+<h3 id="创建播放源"><a href="#创建播放源" class="headerlink" title="创建播放源"></a>创建播放源</h3><p><code>const source = audioContext.createMediaElementSource(audio);</code></p>
+<h3 id="创建可视化节点"><a href="#创建可视化节点" class="headerlink" title="创建可视化节点"></a>创建可视化节点</h3><p><code>const analyser = audioContext.createAnalyser();</code></p>
+<p>有了这个之后可以获取当前声音的音频数据,用法：</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> dataArray = <span class="keyword">new</span> <span class="built_in">Uint8Array</span>(analyser.frequencyBinCount);</span><br><span class="line">analyser.getByteFrequencyData(dataArray);</span><br></pre></td></tr></table></figure>
+
+<h3 id="连接播放器"><a href="#连接播放器" class="headerlink" title="连接播放器"></a>连接播放器</h3><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">source.connect(analyser);</span><br><span class="line">analyser.connect(audioContext.destination);</span><br></pre></td></tr></table></figure>
+
+<h3 id="自动播放"><a href="#自动播放" class="headerlink" title="自动播放"></a>自动播放</h3><p>在web上可以通过模拟点击实现交互，然后使audioContext处于running状态<br><code>document.body.click();</code><br>在微信上使用微信的SDK，<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_34304013/article/details/88986304">https://blog.csdn.net/weixin_34304013/article/details/88986304</a><br>在抖音，头条等环境是允许自动播放的（IOS也可以），不用额外的设置。</p>
+<p>参考资料：<br><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Web_Audio_API">https://developer.mozilla.org/zh-CN/docs/Web/API/Web_Audio_API</a><br><a target="_blank" rel="noopener" href="http://mdn.github.io/violent-theremin/">http://mdn.github.io/violent-theremin/</a><br><a target="_blank" rel="noopener" href="https://benzleung.gitbooks.io/web-audio-api-mini-guide/content/chapter1.html">https://benzleung.gitbooks.io/web-audio-api-mini-guide/content/chapter1.html</a></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/posts/webgl_study2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="zhaha">
+      <meta itemprop="description" content="Growing front-end engineer.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zhaha's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/posts/webgl_study2/" class="post-title-link" itemprop="url">WebGL_入门学习2</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-12-23 19:48:08" itemprop="dateCreated datePublished" datetime="2020-12-23T19:48:08+08:00">2020-12-23</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-11-30 20:48:57" itemprop="dateModified" datetime="2021-11-30T20:48:57+08:00">2021-11-30</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/note/" itemprop="url" rel="index"><span itemprop="name">note</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p><img src="/images/webgl/webgl7.png" alt="webgl"></p>
+<h1 id="缓冲区对象"><a href="#缓冲区对象" class="headerlink" title="缓冲区对象"></a>缓冲区对象</h1><ol>
+<li>创建缓冲区对象： gl.createBuffer()</li>
+<li>绑定缓冲区对象： gl.bindBuffer()</li>
+<li>将数据写入缓冲区对象：gl.bufferData()</li>
+<li> void bufferData(GLenum target, GLsizeiptr size , GLenum usage);    1. 这个方法是上面方法的重载，把数据换成了size（单位字节）。</li>
+<li> void bufferSubData(GLenum target, GLintptr offset, BufferDataSource? data);    1. 这个方法结合方法a，进行赋值， offset是偏移量（单位字节）。    2. 通常用a和b结合的方式，更灵活一些。</li>
+<li>将缓冲区对象分配给一个attribute变量：gl.vertexAttribPointer()</li>
+<li>开启attribute变量：gl.enableVertexAttribArray()</li>
+<li>删除缓冲区对象： gl.deleteBuffer()</li>
+</ol>
+<h1 id="3d基础"><a href="#3d基础" class="headerlink" title="3d基础"></a>3d基础</h1><p>3d区别于2d最显著的就是3d有深度。</p>
+<p>根据上次的笔记我们知道，shader是渲染的基础，虽然在3d中我们要考虑的多得多，但是最后还是要把3d场景绘制在2d屏幕上（观察者看到的世界）。</p>
+<h2 id="模型矩阵"><a href="#模型矩阵" class="headerlink" title="模型矩阵"></a>模型矩阵</h2><p>我们把使用平移、缩放、旋转等基本变换矩阵或他们的组合叫做模型矩阵。这里不做赘述。</p>
+<p>使用过three等webgl库的人应该很清楚相机的概念。</p>
+<p>其实一个相机就是在模拟一个观察者。</p>
+<p>我们需要的就是确定观察者的状态（视图矩阵），以及观察者的可视范围（投影矩阵）。</p>
+<p>我们以 three 的正交相机举例</p>
+<p><img src="/images/webgl/webgl8.png" alt="webgl"></p>
+<ul>
+<li>当相机初始化的时候，我们传入的这些参数（可见下文正交投影解析），就构成了一个正交投影矩阵，它也定义了这个相机的可视范围。<br>其他WebGL库以及webGL引擎的相机的能力大多如此，只是api形式有所变化而已。</li>
+</ul>
+<h2 id="视图矩阵"><a href="#视图矩阵" class="headerlink" title="视图矩阵"></a>视图矩阵</h2><p>为了确定观察者的状态，我们需要知道：</p>
+<ul>
+<li>视点（观察者的位置）：观察者所在三维空间，视线的起点。</li>
+<li>观察目标点：被观察的目标所在的位置。（视线穿过目标点并继续延展）</li>
+<li>上方向：最终绘制在屏幕上的影像中向上的方向。（固定住观察者，不让其以视线为轴旋转）</li>
+</ul>
+<p><img src="/images/webgl/webgl9.png" alt="webgl"></p>
+<p>上面的三个矢量描述合并在一起就是视图矩阵。</p>
+<p>视图矩阵可以被用来表示观察者的状态，最终会被传递给顶点着色器。</p>
+<p>（这里用gl-matrix来计算视图矩阵）</p>
+<p>eye: vec3  代表视点；</p>
+<p>at: vec3  代表观察目标点；</p>
+<p>up: vec3 代表上方向；</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// mat4.looAt(out, eye, at, up)</span><br><span class="line">const viewMatrix = mat4.lookAt(mat4.create(), eye, at, up);</span><br></pre></td></tr></table></figure>
+
+<h2 id="投影矩阵"><a href="#投影矩阵" class="headerlink" title="投影矩阵"></a>投影矩阵</h2><p><img src="/images/webgl/webgl10.png" alt="webgl"></p>
+<p>WebGL模拟了人的观察物体的方式（人类只能看到眼前的东西，水平视角大约200度左右）。</p>
+<p>WebGL限制了“能够看多远”，定义了可视空间的概念，包括水平视角、垂直视角和可视深度。</p>
+<p>两类常用的可视空间：</p>
+<ul>
+<li>长方形可视空间，也称盒状空间，由正交投影产生。</li>
+<li>金字塔可视空间，由透视投影产生。</li>
+</ul>
+<h3 id="正交投影：-定义盒状空间"><a href="#正交投影：-定义盒状空间" class="headerlink" title="正交投影： 定义盒状空间"></a>正交投影： 定义盒状空间</h3><ul>
+<li>left  right 指定近裁剪面的左右边界</li>
+<li>bottom top 指定近裁剪面的上下边界</li>
+<li>near far 指定近裁剪面和远裁剪面的位置，及可视空间的近边界和远边界。</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 正交投影矩阵 </span><br><span class="line">const projMatrix = mat4.ortho(mat4.create(),left, right, bottom, top, near, far);</span><br></pre></td></tr></table></figure>
+<p><img src="/images/webgl/webgl11.png" alt="webgl"></p>
+<h3 id="透视投影：-定义金字塔空间"><a href="#透视投影：-定义金字塔空间" class="headerlink" title="透视投影： 定义金字塔空间"></a>透视投影： 定义金字塔空间</h3><ul>
+<li>fov 指定垂直视角（角度）</li>
+<li>aspect 近裁剪面的宽高比</li>
+<li>near far 近裁剪面和远裁剪面的位置</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 透视投影矩阵 </span><br><span class="line">const projMatrix2 = mat4.perspective(mat4.create(), fov, aspect, near, far);</span><br></pre></td></tr></table></figure>
+<p><img src="/images/webgl/webgl12.png" alt="webgl"></p>
+<p>一般来说，模型矩阵、视图矩阵、投影矩阵都会传递给顶点着色器，对gl_position做处理。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">// 顶点着色器</span><br><span class="line">precision mediump float;</span><br><span class="line">attribute vec4 a_Position;</span><br><span class="line">uniform mat4 u_PrijMatrix; // 投影矩阵</span><br><span class="line">uniform mat4 u_ViewMatrix; // 视图矩阵</span><br><span class="line">uniform mat4 u_ModelMatrix; // 模型矩阵</span><br><span class="line">void main() &#123;</span><br><span class="line">  gl_Position = u_PrijMatrix * u_ViewMatrix * u_ModelMatrix * a_Position;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>但是因为顶点着色器是逐个顶点的运算，为了提升运算性能，我们可以在js代码中将三个矩阵的运算计算好，合并成模型视图投影矩阵，再传递给顶点着色器，这样就不用每个顶点都算一次了。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">// js代码</span><br><span class="line">const matrix = prijMatrix * viewMatrix * modelMatrix</span><br><span class="line">const u_Matrix = gl.getUniformLocation(program, &#x27;u_Matrix&#x27;);</span><br><span class="line">gl.uniformMatrix4fv(u_Matrix, false, matrix);</span><br><span class="line"></span><br><span class="line">// 顶点着色器</span><br><span class="line">precision mediump float;</span><br><span class="line">attribute vec4 a_Position;</span><br><span class="line">uniform mat4 u_Matrix; // 模型视图投影矩阵</span><br><span class="line">void main() &#123;</span><br><span class="line">  gl_Position = u_Matrix * a_Position;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="深度测试-amp-深度冲突"><a href="#深度测试-amp-深度冲突" class="headerlink" title="深度测试 &amp; 深度冲突"></a>深度测试 &amp; 深度冲突</h2><h3 id="隐藏面消除"><a href="#隐藏面消除" class="headerlink" title="隐藏面消除"></a>隐藏面消除</h3><p>WebGL 提供隐藏面消除的功能。这个功能会帮我们清除被遮挡的部分。</p>
+<ol>
+<li>开启隐藏面消除</li>
+</ol>
+<p><code>gl.enable(gl.DEPTH_TEST)</code></p>
+<ol start="2">
+<li>清除深度缓冲区</li>
+</ol>
+<p><code>gl.clear(gl.DEPTH_BUFFER_BIT)</code></p>
+<p>深度缓冲区是一个中间对象（用于存储深度信息）。每一帧绘制前，我们都必须清除深度缓冲区，清除上一帧留下的痕迹。</p>
+<p><img src="/images/webgl/webgl13.png" alt="webgl"></p>
+<h3 id="多边形偏移"><a href="#多边形偏移" class="headerlink" title="多边形偏移"></a>多边形偏移</h3><p>WebGL 提供一种叫多边形偏移的机制用来处理两个表面过于接近，深度缓冲区有限的京都已经不能区分哪个在前面哪个在后面的情况。</p>
+<ol>
+<li>开启多边形偏移</li>
+</ol>
+<p><code>gl.enable(gl.POLYGON_OFFSET_FILL)</code></p>
+<ol start="2">
+<li>绘制前指定用来计算偏移量的参数</li>
+</ol>
+<p><code>gl.polygonOffset(1.0,1.0)</code></p>
+<p><img src="/images/webgl/webgl14.png" alt="webgl"></p>
+<h3 id="多边形剔除"><a href="#多边形剔除" class="headerlink" title="多边形剔除"></a>多边形剔除</h3><p>在一个多边形表面模型中，遮挡剔除就是以多边形内外侧为基准，判断是否绘制这个多边形。</p>
+<p>WebGL中，默认规定遮挡剔除是无效的，无论以怎样的顺序来定义顶点都会绘制全部的多边形。但是，遮挡剔除有效的时候，只有满足特定的条件的多边形才会进行绘制，看不见的部分是不会绘制的，这样就会减弱坐标计算等负担。</p>
+<p><code>gl.enable(gl.CULL_FACE);</code></p>
+<p>多边形的内侧和外侧是根据顶点的连接顺序来判断的，而这个判断基准反过来的情况也是有的，形成多边形的顶点的连接顺序是顺时针的时候是外侧，逆时针的时候为内侧，想要反过来判断的话，顺时针就变成了内侧。</p>
+<p>顺时针统称为CW，因为［顺时针］的英语是ClockWise，CW就是它的头文字。而逆时针统称为CCW，因为［逆时针］的英语为CounterClockWise。改变WebGL中遮挡剔除的内侧和外侧的判断标准的函数是frontFace，参数就是刚才提到的CW和CCW。</p>
+<p>将顺时针设置为［外侧］的代码：<code>gl.frontFace(gl.CW);</code></p>
+<p>将顺时针设置为［内侧］的代码：<code>gl.frontFace(gl.CCW);</code></p>
+<h2 id="gl-drawArrays-amp-gl-drawElements"><a href="#gl-drawArrays-amp-gl-drawElements" class="headerlink" title="gl.drawArrays &amp; gl.drawElements"></a>gl.drawArrays &amp; gl.drawElements</h2><p>我们之前经常一直使用的是gl.drawArrays()来进行绘制。<br>这两者的区别是啥呢？</p>
+<p>之前说webgl中最常用的就是三角形网络。我们想象一下绘制一个正方体，如果按照先前的办法，假设用gl.drawArrays(gl.TRIANGLES)我们定义一个三角形需要三个顶点，定义一个正方体的面需要两个三角形，也就是六个顶点。那么一个正方体需要6*6=36个顶点（如果用gl.drawArrays(gl.TRIANGLE_FAN)需要24个顶点，但必须对每一个面调用一次drawArrays）。但是实际上8个顶点就能构成一个正方体。</p>
+<p>WebGL提供了gl.drawElements()来避免重复定义顶点，保持顶点个数最小。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// mode 指定绘制方式</span><br><span class="line">// count 指定绘制顶点个数</span><br><span class="line">// type 指定索引值数据类型</span><br><span class="line">// offset 索引数组中开始绘制的位置，以字节为单位</span><br><span class="line">gl.drawElements(mode, count, type, offset)</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/webgl/webgl15.png" alt="webgl"></p>
+<ul>
+<li>gl.ARRAY_BUFFER: 普通的缓冲区类型</li>
+<li>gl.ELEMENT_ARRAY_BUFFER：具有索引结构的三位数据模型缓冲区类型</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">// 绘制一个正方体</span><br><span class="line">// 顶点及颜色</span><br><span class="line">const verticesColors = new Float32Array([</span><br><span class="line">  1.0, 1.0, 1.0, 1.0, 1.0, 1.0, // 顶点 + 颜色</span><br><span class="line">  -1.0, 1.0, 1.0, 1.0, 0.0, 1.0，</span><br><span class="line">  ...</span><br><span class="line">  -1.0, -1.0, -1.0, 0.0, 0.0, 0.0, </span><br><span class="line">])</span><br><span class="line">// 顶点绕线顺序 每三个一个三角形</span><br><span class="line">const indices = new Uint8Array([</span><br><span class="line">  0, 1, 2, 0, 2, 3, // 前</span><br><span class="line">  0, 3, 4, 0, 4, 5, // 右</span><br><span class="line">  0, 5, 6, 0, 6, 1, // 上</span><br><span class="line">  1, 6, 7, 1, 7, 2, // 左</span><br><span class="line">  7, 4, 3, 7, 3, 2, // 下</span><br><span class="line">  4, 7, 6, 4, 6, 5, // 后</span><br><span class="line">])</span><br><span class="line">// 创建顶点&amp;颜色缓冲区 </span><br><span class="line">const vertexColorBuffer = gl.createBuffer();</span><br><span class="line">// 创建绕线顺序缓冲区</span><br><span class="line">const indexBuffer = gl.createBuffer();</span><br><span class="line"></span><br><span class="line">// 写入缓冲区。把顶点&amp;颜色数据绑定到ArrayBuffer</span><br><span class="line">gl.bindBuffer(gl.ARRAY_BUFFER, vertexColorBuffer);</span><br><span class="line">gl.bufferData(gl.ARRAY_BUFFER, verticesColors, gl.STATIC_DRAW)</span><br><span class="line"></span><br><span class="line">// 设置颜色和顶点attribute</span><br><span class="line">const size = verticesColors.BYTES_PER_ELEMENT;</span><br><span class="line">const a_Position = gl.getAttribLocation(program, &#x27;a_Position&#x27;);</span><br><span class="line">const a_Color = gl.getAttribLocation(program, &#x27;a_Color&#x27;);</span><br><span class="line">gl.vertexAttribPointer(a_Position, 3, gl.FLOAT, false, size * 6, 0);</span><br><span class="line">gl.enableVertexAttribArray(a_Position);</span><br><span class="line">gl.vertexAttribPointer(a_Color, 3, gl.FLOAT, false, size * 6, size * 3);</span><br><span class="line">gl.enableVertexAttribArray(a_Color);</span><br><span class="line"></span><br><span class="line">// 写入缓冲区。把绕线顺序对象写进ElementArrayBuffer</span><br><span class="line">gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, indexBuffer);</span><br><span class="line">gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, indices, gl.STATIC_DRAW)</span><br><span class="line"></span><br><span class="line">// 绘制正方体</span><br><span class="line">gl.clear(gl.COLOR_BUFFER_BIT);</span><br><span class="line">gl.clear(gl.DEPTH_BUFFER_BIT);</span><br><span class="line">gl.drawElements(gl.TRIANGLES, count, gl.UNSIGNED_BYTE, 0);</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/webgl/webgl16.png" alt="webgl"></p>
+<h2 id="球面坐标系"><a href="#球面坐标系" class="headerlink" title="球面坐标系"></a>球面坐标系</h2><p><img src="/images/webgl/webgl17.png" alt="webgl"></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/posts/webgl_study1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="zhaha">
+      <meta itemprop="description" content="Growing front-end engineer.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zhaha's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/posts/webgl_study1/" class="post-title-link" itemprop="url">WebGL_入门学习1</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-11-30 19:48:08" itemprop="dateCreated datePublished" datetime="2020-11-30T19:48:08+08:00">2020-11-30</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-11-30 20:48:57" itemprop="dateModified" datetime="2021-11-30T20:48:57+08:00">2021-11-30</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/note/" itemprop="url" rel="index"><span itemprop="name">note</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="基本概念理解"><a href="#基本概念理解" class="headerlink" title="基本概念理解"></a>基本概念理解</h1><h2 id="渲染管线"><a href="#渲染管线" class="headerlink" title="渲染管线"></a>渲染管线</h2><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/biglucky/p/4223565.html">CPU &amp; GPU 的区别</a></p>
+<ol>
+<li> 应用程序阶段(CPU): 对图元数据等信息进行配置和调控，最后传输到下一个阶段。实现碰撞检测、动画等等。</li>
+<li>几何阶段(GPU):  </li>
+</ol>
+<ul>
+<li>模型视点变换： 模型坐标系=》世界坐标系=》视觉空间</li>
+<li>顶点着色：确定顶点颜色，着色器来编写颜色方程放在GPU里运行，快速的进行颜色的确定。</li>
+<li>投影：从三维到二维空间映射</li>
+<li>裁剪：去掉屏幕空间外的信息</li>
+<li>屏幕映射：将之前得到的坐标映射到屏幕坐标系上</li>
+</ul>
+<ol start="3">
+<li>光栅化阶段(GPU)（见下文）</li>
+</ol>
+<h2 id="光栅化"><a href="#光栅化" class="headerlink" title="光栅化"></a>光栅化</h2><p>概念：将矢量顶点组成的图形进行像素化的过程，计算屏幕上每一个像素点的rgb值。</p>
+<p>目前主流的面片分割是三角形分割，所以我们常见的也是三角形网络。在这3d模型中每一个面片单元都是三角形。以下是常用的三种计算一个三角形单元颜色的方法：</p>
+<ul>
+<li>顶点颜色取平均值</li>
+<li>取某个点颜色</li>
+<li>取三个顶点颜色的渐变</li>
+</ul>
+<h1 id="shader"><a href="#shader" class="headerlink" title="shader"></a>shader</h1><p>shader本质上是一个函数，我们用到的shader函数会被串联到一个着色器程序中。</p>
+<p>shader 分两大类。Vertex Shader（顶点着色器）and Fragment Shader(片段着色器)。</p>
+<h2 id="WebGL-程序执行流程"><a href="#WebGL-程序执行流程" class="headerlink" title="WebGL 程序执行流程"></a>WebGL 程序执行流程</h2><p><img src="/images/webgl/webgl1.png" alt="webgl"></p>
+<h3 id="一个三维物体在二维屏幕上的显示过程"><a href="#一个三维物体在二维屏幕上的显示过程" class="headerlink" title="一个三维物体在二维屏幕上的显示过程"></a>一个三维物体在二维屏幕上的显示过程</h3><ol>
+<li>坐标变换（transform）：将场景中的三维坐标转换为二维坐标  (顶点着色器)</li>
+<li>颜色计算（shade）:  计算每个顶点的颜色，通过UV贴图的颜色，结合光照，透明度等，计算出模型每个顶点的具体颜色（R, G, B）(顶点着色器，会传递给片元着色器)</li>
+<li>光栅化（rasterization）:  假定屏幕分辨率为1920×1080，在二维屏幕渲染（光栅化）时，内存中frame buffer只保存着1920×1080个屏幕点的颜色，然后一个一个的画到屏幕上。（它的实现方式是以一个1920×1080长的一维数组储存每个顶点的RGB颜色，然后遍历数组画出来）什么X, Y, Z，什么alpha之类的frame buffer都没有的，在frame buffer里只有3个值：R, G, B。X, Y, Z, alpha等等属性要在另外的地方存储。光栅化，就是计算出1920×1080这么长的RGB数组中，每一个RGB的值。</li>
+<li>片元着色器</li>
+</ol>
+<p><img src="/images/webgl/webgl2.png" alt="webgl"></p>
+<h2 id="顶点着色器"><a href="#顶点着色器" class="headerlink" title="顶点着色器"></a>顶点着色器</h2><p>顶点着色器将顶点的空间坐标映射到屏幕上的2d坐标。多用于3d模型构建。如果有之后定义了几何着色器，则几何着色器会处理顶点着色器的输出数据.</p>
+<p>顶点着色器数据输入方式</p>
+<ol>
+<li>Attribute</li>
+<li>uniform</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">void main() &#123;</span><br><span class="line">  gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="片元着色器"><a href="#片元着色器" class="headerlink" title="片元着色器"></a>片元着色器</h2><p>用于计算“片段”的颜色和其它属性，此处的“片段”通常是指单独的像素。最简单的像素着色器只有输出颜色值；复杂的像素着色器可以有多个输入输出。像素着色器既可以永远输出同一个颜色，也可以考虑光照、做凹凸贴图、生成阴影和高光，还可以实现半透明等效果。像素着色器还可以修改片段的深度，也可以为多个渲染目标输出多个颜色。</p>
+<p>片段着色器输入数据方式：</p>
+<ol>
+<li>Uniform</li>
+<li>Texture</li>
+<li>Varying</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">void main() &#123;</span><br><span class="line">  gl_FragColor = vec4( 1.0, 0.0, 0.0, 1.0 );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="图形流水线"><a href="#图形流水线" class="headerlink" title="图形流水线"></a>图形流水线</h2><ul>
+<li>中央处理器（CPU）发送指令（编译的着色器程序）和几何数据到位于显卡内的图形处理器（GPU）。</li>
+<li>顶点着色器执行几何变换和光照计算。</li>
+<li>若几何着色器位于图形处理器内，它便会修改一些几何信息。</li>
+<li>计算后的几何模型被三角化（分割为三角形）。</li>
+<li>三角形被映射为2×2的像素块。</li>
+</ul>
+<h2 id="Attribute"><a href="#Attribute" class="headerlink" title="Attribute"></a>Attribute</h2><p>只出现在顶点着色器中，用来表示逐顶点的信息。可 从缓存中读取属性。<br>只能是fload 、vec 、mat 类型</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">// 创建缓存</span><br><span class="line">let buffer = gl.createBuffer();</span><br><span class="line">// 写入数据</span><br><span class="line">gl.bindBuffer(gl.ARRAY_BUFFER, buffer);</span><br><span class="line">gl.bufferData(gl.ARRAY_BUFFER, 数据, gl.STATIC_DRAW);</span><br><span class="line"></span><br><span class="line">// 找到 attribute 的位置</span><br><span class="line">const location = gl.getAttribLocation(program, &quot;a_Position&quot;);</span><br><span class="line"></span><br><span class="line">// 允许该属性从缓冲区获取数据</span><br><span class="line">gl.enableVertexAttribArray(location);</span><br><span class="line"></span><br><span class="line">// 属性赋值</span><br><span class="line">gl.vertexAttribPointer(positionLoc, numComponents, type, false, stride, offset);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><code>gl.createBuffer()</code></p>
+<p><code>gl.bindBuffer(target, buffer) </code></p>
+<h2 id="Uniform"><a href="#Uniform" class="headerlink" title="Uniform"></a>Uniform</h2><p>传递给着色器的值。用于外部与着色器进行通信，是只读的在着色器中无法修改，在所有已处理的顶点之间值相同。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">// three  </span><br><span class="line">const material = new THREE.ShaderMaterial(&#123;</span><br><span class="line">    transparent: true,</span><br><span class="line">    uniforms: &#123;</span><br><span class="line">      // 下面定义一些 uniform 传递给 shader</span><br><span class="line">      maskOffset: &#123; value: maskOffset &#125;,</span><br><span class="line">      imageSize: &#123; value: new THREE.Vector2(1, 1) &#125;,</span><br><span class="line">      time: &#123; value: 0.0 &#125;,</span><br><span class="line">      map: &#123; value: new THREE.TextureLoader().load(image) &#125;,</span><br><span class="line">      map2: &#123; value: new THREE.TextureLoader().load(image) &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">    vertexShader: vertex,</span><br><span class="line">    fragmentShader: fragment,</span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="Varying"><a href="#Varying" class="headerlink" title="Varying"></a>Varying</h2><p>从顶点着色器传递给片段着色器的值。与uniform 不同的是，varying可以被顶点着色器修改，在片段着色器中只读。值是一个插值数据，每个像素都不同。顶点着色器的v_color在传入片元着色器之前经过了一个内插过程，所以才会有如下渐变效果。</p>
+<p><img src="/images/webgl/webgl3.png" alt="webgl"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">// 顶点着色器</span><br><span class="line">attribute vec4 a_Position;</span><br><span class="line">attribute float a_PointSize;</span><br><span class="line">attribute vec4 a_Color;</span><br><span class="line">varying vec4 v_Color;</span><br><span class="line">void main() &#123;</span><br><span class="line">  gl_Position = a_Position;</span><br><span class="line">  gl_PointSize = a_PointSize;</span><br><span class="line">  v_Color = a_Color;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 片段着色器</span><br><span class="line">precision mediump float;</span><br><span class="line">varying vec4 v_Color;</span><br><span class="line">void main() &#123;</span><br><span class="line">  gl_FragColor = v_Color;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/webgl/webgl4.png" alt="webgl"></p>
+<h2 id="WebGl-相关-Api"><a href="#WebGl-相关-Api" class="headerlink" title="WebGl 相关 Api"></a>WebGl 相关 Api</h2><h3 id="创建shader相关"><a href="#创建shader相关" class="headerlink" title="创建shader相关"></a>创建shader相关</h3><ul>
+<li>gl.createProgram() 创建着色器程序</li>
+<li>gl.attachShader(program, shader)把着色器放到着色器程序上</li>
+<li>gl.linkProgram(program) 连接着色器程序中的着色器</li>
+<li>gl.useProgram(program) 指定webgl使用的着色器程序</li>
+<li>gl.createShader(type: gl.VERTEX_SHADER | gl.FRAGMENT_SHADER):WebGLShader ： 创建指定类型的shader</li>
+<li>gl.shaderSource(shader, code): code 为 shader代码段，给shader设置 code 资源</li>
+<li>gl.compileShader(shader): 编译shader</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">const canvas = &lt;HTMLCanvasElement&gt;document.getElementById(&#x27;webgl&#x27;);</span><br><span class="line">const gl = canvas.getContext(&#x27;webgl&#x27;);</span><br><span class="line">const program = gl.createProgram();</span><br><span class="line">const vertex_shader = createShader(gl, vertex, gl.VERTEX_SHADER);</span><br><span class="line">const flag_shader = createShader(gl, frag, gl.FRAGMENT_SHADER);</span><br><span class="line">gl.attachShader(program, vertex_shader);</span><br><span class="line">gl.attachShader(program, flag_shader);</span><br><span class="line">// 将program中的shader连接起来</span><br><span class="line">gl.linkProgram(program);</span><br><span class="line">// 指定webgl使用的着色器程序</span><br><span class="line">gl.useProgram(program);</span><br><span class="line"></span><br><span class="line">function createShader (gl: WebGLRenderingContext, sourceCode: string, type: number) &#123;</span><br><span class="line">  const shader = gl.createShader( type );</span><br><span class="line">  gl.shaderSource( shader, sourceCode );</span><br><span class="line">  gl.compileShader( shader );</span><br><span class="line">  // 以下用于测试 shader 是否正确 </span><br><span class="line">  if ( !gl.getShaderParameter(shader, gl.COMPILE_STATUS) ) &#123;</span><br><span class="line">    var info = gl.getShaderInfoLog( shader );</span><br><span class="line">    throw &#x27;Could not compile WebGL program. \n\n&#x27; + info;</span><br><span class="line">  &#125;</span><br><span class="line">  return shader;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="shader传值相关"><a href="#shader传值相关" class="headerlink" title="shader传值相关"></a>shader传值相关</h3><ul>
+<li>从缓冲中获取属性<br><img src="/images/webgl/webgl5.png" alt="webgl"></li>
+<li>给uniform 赋值： gl.uniform…</li>
+<li>给attribute赋值：gl.vertexAttrib…</li>
+</ul>
+<h1 id="配置加载纹理"><a href="#配置加载纹理" class="headerlink" title="配置加载纹理"></a>配置加载纹理</h1><p>webgl通过一种纹理单元的机制来同时使用多个纹理，每个纹理单元有一个单元编号来管理纹理图像，即使程序只需要使用一张纹理图像也要指定纹理单元。系统支持的纹理单元个数取决于硬件和浏览器的webGL实现。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">function loadTexture(image: HTMLImageElement, gl: WebGLRenderingContext, program: WebGLProgram)&#123;</span><br><span class="line">  const texture = gl.createTexture();</span><br><span class="line">  // 对纹理图像进行y轴反转  让纹理和图片坐标系统能对应上</span><br><span class="line">  gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, 1);</span><br><span class="line">  // 激活一个纹理单元 </span><br><span class="line">  gl.activeTexture(gl.TEXTURE0);</span><br><span class="line">  // 绑定纹理对象，指定纹理类型。如果已经激活了某个纹理单元，但纹理对象也会绑定到单元上</span><br><span class="line">  gl.bindTexture(gl.TEXTURE_2D, texture);</span><br><span class="line">  gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, image);</span><br><span class="line">  // 创建mipmap</span><br><span class="line">  // gl.generateMipmap(gl.TEXTURE_2D);</span><br><span class="line">  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);</span><br><span class="line">  const u_Sampler = gl.getUniformLocation(program, &#x27;u_Sampler&#x27;);</span><br><span class="line">  gl.uniform1i(u_Sampler, 0);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>纹理过滤器</strong><br>只有 gl.CLAMP_TO_EDGE 支持非2的整次幂的纹理。<a target="_blank" rel="noopener" href="https://www.khronos.org/webgl/wiki/WebGL_and_OpenGL_Differences">非2幂次方的图片不能用repeat 和MIPMAP</a></p>
+<p>当纹理像素分辨率不符合2<em>2 4</em>4这种时，chrome上会报错： WARNING: texture bound to texture unit 0 is not renderable. It maybe non-power-of-2 and have incompatible texture filtering.要在设置水平和垂直如何填充的时候，设置成水平和垂直拉伸。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);</span><br><span class="line">gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);</span><br></pre></td></tr></table></figure>
+
+<p>解决方案：用dom api 改变图片的尺寸</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">function createTextureFromImage(image) &#123;</span><br><span class="line">    var texture = gl.createTexture();</span><br><span class="line">    gl.bindTexture(gl.TEXTURE_2D, texture);</span><br><span class="line">    if (!isPowerOfTwo(image.width) || !isPowerOfTwo(image.height)) &#123;</span><br><span class="line">        // Scale up the texture to the next highest power of two dimensions.</span><br><span class="line">        var canvas = document.createElement(&quot;canvas&quot;);</span><br><span class="line">        canvas.width = nextHighestPowerOfTwo(image.width);</span><br><span class="line">        canvas.height = nextHighestPowerOfTwo(image.height);</span><br><span class="line">        var ctx = canvas.getContext(&quot;2d&quot;);</span><br><span class="line">        ctx.drawImage(image, 0, 0, image.width, image.height);</span><br><span class="line">        image = canvas;</span><br><span class="line">    &#125;</span><br><span class="line">    gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, image);</span><br><span class="line">    gl.generateMipmap(gl.TEXTURE_2D);</span><br><span class="line">    gl.bindTexture(gl.TEXTURE_2D, null);</span><br><span class="line">    return texture;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function isPowerOfTwo(x) &#123;</span><br><span class="line">    return (x &amp; (x - 1)) == 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function nextHighestPowerOfTwo(x) &#123;</span><br><span class="line">    --x;</span><br><span class="line">    for (var i = 1; i &lt; 32; i &lt;&lt;= 1) &#123;</span><br><span class="line">        x = x | x &gt;&gt; i;</span><br><span class="line">    &#125;</span><br><span class="line">    return x + 1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="颜色混合"><a href="#颜色混合" class="headerlink" title="颜色混合"></a>颜色混合</h1><p>常用α混合：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">gl.enable(gl.BLEND)</span><br><span class="line">gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA)</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/webgl/webgl6.png" alt="webgl"></p>
+<h1 id="深度测试"><a href="#深度测试" class="headerlink" title="深度测试"></a>深度测试</h1><ol>
+<li>gl.enable(gl.DEPTH_TEST);</li>
+<li>gl.depthFunc(value)</li>
+</ol>
+<ul>
+<li>gl.NEVER （总不通过）</li>
+<li>gl.LESS（如果新值小于缓冲区中的值则通过）</li>
+<li>gl.EQUAL（如果新值等于缓冲区中的值则通过）</li>
+<li>gl.LEQUAL（如果新值小于等于缓冲区中的值则通过）</li>
+<li>gl.GREATER（如果新值大于缓冲区中的值则通过）</li>
+<li>gl.NOTEQUAL（如果新值不等于缓冲区中的值则通过）</li>
+<li>gl.GEQUAL（如果新值大于等于缓冲区中的值则通过）</li>
+<li>gl.ALWAYS（总通过）</li>
+</ul>
+<h1 id="参考阅读"><a href="#参考阅读" class="headerlink" title="参考阅读"></a>参考阅读</h1><p><a target="_blank" rel="noopener" href="https://xiaoiver.github.io/coding/2019/02/02/%E5%8F%8D%E8%B5%B0%E6%A0%B7%E6%8A%80%E6%9C%AF-%E4%B8%89.html">反走样</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/dcrmg/article/details/53556664">图形渲染管线、VBO、VAO、EBO概念</a></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/posts/js_note2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="zhaha">
+      <meta itemprop="description" content="Growing front-end engineer.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zhaha's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/posts/js_note2/" class="post-title-link" itemprop="url">js深入_2(事件循环)</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-03-07 16:50:39" itemprop="dateCreated datePublished" datetime="2020-03-07T16:50:39+08:00">2020-03-07</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-11-30 20:48:36" itemprop="dateModified" datetime="2021-11-30T20:48:36+08:00">2021-11-30</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/note/" itemprop="url" rel="index"><span itemprop="name">note</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="事件循环（Event-Loop）"><a href="#事件循环（Event-Loop）" class="headerlink" title="事件循环（Event-Loop）"></a>事件循环（Event-Loop）</h2><p>js是一个<code>单线程、非阻塞</code>的脚本语言。非阻塞就是靠事件循环实现的（event loop）。</p>
+<p>js引擎本身并没有异步的概念。“事件”调度总是由包含它的环境执行。</p>
+<p><img src="/images/js/eventLoop.jpg" alt="eventLoop"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">// 全局作用域 window  </span><br><span class="line">new Promise((resolve) =&gt; &#123;  </span><br><span class="line"> // 作用域 p  </span><br><span class="line"> a()  </span><br><span class="line"> resolve()  </span><br><span class="line">&#125;).then(b)  </span><br><span class="line">setTimeout(()=&gt;&#123;  </span><br><span class="line"> console.log(5)  </span><br><span class="line">&#125;,0)  </span><br><span class="line">console.log(&#x27;4&#x27;)  </span><br><span class="line">function a()&#123;  </span><br><span class="line"> // 作用域 a  </span><br><span class="line"> console.log(&#x27;1&#x27;)  </span><br><span class="line"> c()  </span><br><span class="line">&#125;  </span><br><span class="line">function b()&#123;  </span><br><span class="line"> // 作用域 b  </span><br><span class="line"> console.log(‘2’)  </span><br><span class="line">&#125;  </span><br><span class="line">function c()&#123;  </span><br><span class="line"> // 作用域 c  </span><br><span class="line"> console.log(&#x27;3&#x27;)  </span><br><span class="line">&#125;  </span><br><span class="line">//输出 13425  </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>下面以以上代码解释一下js事件循环</p>
+<h3 id="执行过程"><a href="#执行过程" class="headerlink" title="执行过程"></a>执行过程</h3><ol>
+<li> js引擎将当前执行作用域（window）放入执行栈中</li>
+<li> new Promise 是同步过程，因此引擎将<code>作用域 p</code> 压入执行栈中</li>
+<li> 执行<code>a()</code> ,将<code>作用域 a</code>压入执行栈中</li>
+<li> 执行输出 <font color="red">1</font>, 执行<code>c()</code>将<code>作用域 c</code>压入执行栈中</li>
+<li> 执行输出 <font color="red">3</font>，<code>c()</code>执行完毕，弹出执行栈，返回当前栈顶<code>作用域 a</code> 中继续执行</li>
+<li> <code>a()</code>执行完毕，弹出执行栈，返回<code>作用域 p</code>中</li>
+<li> 执行resolve()，将then()中的 <code>b</code>加入<code>微任务队列</code>中</li>
+<li> <code>作用域 p</code>执行完毕，弹出栈，返回全局作用域中继续执行</li>
+<li> 遇到setTimeout()，告诉宿主环境，当满足0s延迟条件后，将回调函数加入<code>宏任务队列</code>中</li>
+<li> 继续执行console.log() 输出 <font color="red">4</font></li>
+<li> 全局作用域执行完毕，弹出栈，此时<code>执行栈</code>为空</li>
+<li> <code>微任务队列</code>中task（b），放入<code>执行栈</code>中</li>
+<li> 执行b()，输出 <font color="red">2</font> ，b()执行完毕，弹出栈，<code>执行栈</code>为空</li>
+<li> 此时<code>微任务队列</code>也为空，因此从<code>宏任务队列</code>中取出一个任务（setTimeout的回调）放入执行栈</li>
+<li> 执行输出 <font color="red">5</font> ，弹出栈，<code>执行栈</code>、<code>微任务队列</code>、<code>宏任务队列</code>都为空，执行结束</li>
+</ol>
+<h3 id="执行栈"><a href="#执行栈" class="headerlink" title="执行栈"></a>执行栈</h3><p>按顺序同步执行，碰到下一级作用域就压入执行栈中执行，执行结束弹出栈返回上一级作用域继续执行。</p>
+<h3 id="任务队列"><a href="#任务队列" class="headerlink" title="任务队列"></a>任务队列</h3><ul>
+<li>  <code>宏任务（macrotask）</code>：setTimeout、setInterval、setImmediate、I/O、UI rendering</li>
+<li>  <code>微任务（microtask）</code>：promise.then、process.nextTick</li>
+<li>  先执行微任务，再执行宏任务</li>
+</ul>
+<div class="note danger">
+
+<p>注意：所有文章除特别说明外均属原创，转载请注明出处！</p>
+</div>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/posts/js_note1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="zhaha">
+      <meta itemprop="description" content="Growing front-end engineer.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zhaha's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/posts/js_note1/" class="post-title-link" itemprop="url">js深入_1(类型 & 值 & 原生函数 & 语句)</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-02-20 16:50:39" itemprop="dateCreated datePublished" datetime="2020-02-20T16:50:39+08:00">2020-02-20</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-11-30 20:48:36" itemprop="dateModified" datetime="2021-11-30T20:48:36+08:00">2021-11-30</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/note/" itemprop="url" rel="index"><span itemprop="name">note</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="检测特殊类型方法"><a href="#检测特殊类型方法" class="headerlink" title="检测特殊类型方法"></a>检测特殊类型方法</h3><ul>
+<li><p>  null: !a &amp;&amp; typeof a === ‘object’</p>
+</li>
+<li><p>  {}: Object.keys(a).length === 0</p>
+</li>
+<li><p>[]:</p>
+<ul>
+<li><p>  a instanceOf Array (必须为对象)</p>
+</li>
+<li><p>Object.protopype.toString.call(a) // [object array]</p>
+<p>  Object类型都有内部属性[[Class]]，一般都的通过 Object.prototype.toString.call(…)查看</p>
+</li>
+<li><p>  isArray</p>
+</li>
+</ul>
+</li>
+<li><p>NaN:</p>
+<ul>
+<li><p>  a===a // false 唯一一个自身与自身不相等</p>
+</li>
+<li><p>  Number.isNaN()</p>
+</li>
+</ul>
+</li>
+<li><p>Object.is(a,b)能判断两个值是否相等的全部情况</p>
+<ul>
+<li>  Object.is(NaN,NaN) // true</li>
+<li>  Object.is(+0,-0) // false</li>
+</ul>
+</li>
+</ul>
+<h3 id="undefined-amp-undeclared-amp-void"><a href="#undefined-amp-undeclared-amp-void" class="headerlink" title="undefined &amp; undeclared &amp; void"></a>undefined &amp; undeclared &amp; void</h3><p>typeof 处理未初始化和未声明的变量，结果都是 undefined。但是调用未声明的变量会有ReferenceError。检测对象是否声明并初始化时，要不就是用typeOf，要不就用对象格式</p>
+<p>if(typeof a === ‘undefined’) or if(window.a)</p>
+<p>void不改变表达式的结果，只是让表达式不返回值</p>
+<h3 id="类型转换"><a href="#类型转换" class="headerlink" title="类型转换"></a>类型转换</h3><ol>
+<li><p> 对象转化为基本类型值：ToPrimitive 先执行valueOf()，如果不是基本类型值,就采用toString()的返回值来进行强制类型转换。</p>
+</li>
+<li><p> 显式转换为boolean : !!a</p>
+</li>
+<li><p> 显式强制转换为字符串： a.toString()、String(…) ; 隐式转换：a + “”</p>
+</li>
+<li><p> 显式强制转换为数组： Number(…) 、+a、new Date().getTime()</p>
+</li>
+<li><p> Number(…)只能包含数字，不然为NaN；parseInt(…)从左到右解析</p>
+</li>
+<li><p> Symbol可显式强制转换为字符串，不可隐式转换。</p>
+</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let s1 = Symbol(&quot;haha&quot;)  </span><br><span class="line">String(s1)  // &quot;Symbol(haha)&quot;  </span><br><span class="line">s1 + &quot;&quot;  // TypeError  </span><br><span class="line">    </span><br></pre></td></tr></table></figure>
+
+<pre><code>不可隐式显式转换为数字，但可以隐式显式转换为boolean都为true
+</code></pre>
+<ol start="7">
+<li><p>加法运算：</p>
+<ul>
+<li>  如果都是数字进行数字加法</li>
+<li>  如果某个操作数是字符串或者能够通过ToPrimitive能转换成字符串则进行拼接运算</li>
+</ul>
+</li>
+<li><p>[] + {} [object Object] : []强制转换为’’ object 强制转换为’[object Object]’ 做字符串拼接</p>
+<p> {} + [] 0 : {}作为空代码块处理， +[]显式强制转换为Number类型为 0</p>
+</li>
+</ol>
+<h3 id="与"><a href="#与" class="headerlink" title="== 与 ==="></a>== 与 ===</h3><p>准确来说， == 比 === 做的事情更多（在判断类型的基础上，== 还做了强制类型转换）</p>
+<p>==比较规则：</p>
+<ul>
+<li><p>  同类型直接比较，对象类型直接比较引用 [] == [] // false</p>
+</li>
+<li><p>  字符转与数字 ： 相当于 Number(str) == a</p>
+</li>
+<li><p>  比较中Type(b)为boolean类型： 转换为Number(b)再比较</p>
+</li>
+<li><p>  对象与非对象比较：返回 ToPrimitive(o) == a 的结果</p>
+</li>
+<li><p>  null == undefined</p>
+</li>
+<li><p>[] == ![] // true ![] 为 boolean值false，会转换成Number类型为0; []会执行ToPrimitive转换为’’</p>
+<p>  相当于’’ == 0比较，’’转换为Number 0 故宽松相等</p>
+</li>
+</ul>
+<p>==安全使用原则</p>
+<ul>
+<li>  左右两值中有true或false千万不要用 ==</li>
+<li>  左右两值中有 [], ‘’, 0尽量不用 ==</li>
+</ul>
+<p>关系比较中 &lt; &gt;js中执行正常大于小于操作 对象转换为ToPrimitive<br>&lt;= &gt;=执行的是 !&gt;(不大于) !&lt;(不小于) 操作</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">let a = &#123;num:42&#125;  </span><br><span class="line">let b = &#123;num:43&#125;  </span><br><span class="line">a == b // false toString [object Object]  </span><br><span class="line">a &lt; b // false  </span><br><span class="line">a &gt; b // false  </span><br><span class="line">a &lt;= b // true  </span><br><span class="line">a &gt;= b // true  </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="类数组转数组"><a href="#类数组转数组" class="headerlink" title="类数组转数组"></a>类数组转数组</h3><ul>
+<li><p>  Array.from() es6</p>
+</li>
+<li><p>  Array.prototype.slice.call() concat同</p>
+</li>
+</ul>
+<h3 id="判断浮点数是否相等"><a href="#判断浮点数是否相等" class="headerlink" title="判断浮点数是否相等"></a>判断浮点数是否相等</h3><p>由于浮点数精度问题 类似 0.1 + 0.2 === 0.3 // false</p>
+<p>为了解决这一问题 es6 中有 Number.EPSILON(2^-52) 作为误差范围值</p>
+<p>Math.abs(a-b) &lt; Number.EPSILON 来判断两个浮点数是否相等</p>
+<h3 id="封装对象"><a href="#封装对象" class="headerlink" title="封装对象"></a>封装对象</h3><ul>
+<li><p>  Object(…)可以自行封装基本类型值 // 同new String() 这类效果一样，都不建议使用， js会默认自动封装</p>
+</li>
+<li><p>  new Boolean(false) // true 除null外基本所有的对象值都为true</p>
+</li>
+<li><p>  假值对象是指类似document.all一类，转化为boolean为false</p>
+</li>
+<li><p>  a.valurOf() 获取封装对象中的基本类型值</p>
+</li>
+<li><p>  Object 原型为 null Array原型为 [] RegExp原型为 /(?:)/ Function的原型是空函数。<font color="red">原型就是最好的默认值</font>，因为.prototype是已经被创建的并且只创建一次，从而避免每次都创建造成的cpu资源和内存的浪费</p>
+</li>
+</ul>
+<h3 id="swich-case"><a href="#swich-case" class="headerlink" title="swich case"></a>swich case</h3><p>执行的是 === 操作</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">let a = 10  </span><br><span class="line">switch (true) &#123;  </span><br><span class="line"> case a == 10:  </span><br><span class="line"> console.log(&quot;haha&quot;) // 执行到这里  </span><br><span class="line"> default:  </span><br><span class="line"> ...  </span><br><span class="line">&#125;  </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="全局-dom-变量"><a href="#全局-dom-变量" class="headerlink" title="全局 dom 变量"></a>全局 dom 变量</h3><p>在创建带有id属性的dom元素时会同时创建同名的全局变量</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=&quot;test&quot;&gt;hhh&lt;div&gt;  </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">if(typeOf test == &quot;undefined&quot;)&#123;  </span><br><span class="line"> test = 100 // 永远不会执行  </span><br><span class="line">&#125;  </span><br><span class="line">console.log(test) // html 元素  </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<div class="note danger">
+
+<p>注意：所有文章除特别说明外均属原创，转载请注明出处！</p>
+</div>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zhaha</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
